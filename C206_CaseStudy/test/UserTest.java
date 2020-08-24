@@ -70,8 +70,7 @@ public class UserTest {
 		System.out.println(userList); //test 0
 		
 		
-		
-		
+			
 	}
 
 }

@@ -13,4 +13,6 @@ public class C206_CaseStudy {
 	ArrayList<User> userList = new ArrayList<User>();
 
 	}
+
 }
+

@@ -19,7 +19,7 @@ public class CategoryDB {
 		}
 		return output;
 	}
-	public static void delCategory(Category category) {
+	public static void delCategory(String category) {
 
 		categoryList.remove(category);
 		

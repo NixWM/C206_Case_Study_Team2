@@ -68,7 +68,7 @@ public class CategoryTest {
 		assertNotNull("Test that categoryList is NOT null", CategoryDB.categoryList);
 		
 		//Test that the size of categoryList is 0 after deleting a category
-		CategoryDB.delCategory(category1);
+		CategoryDB.delCategory("category1");
 		assertEquals("Test that the size of categoryList is not 0 after deleting a category", 0, CategoryDB.categoryList.size());
 
 	}

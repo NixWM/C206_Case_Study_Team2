@@ -1,11 +1,13 @@
-  
+
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
 	
 	
 	
-	private static final int OPTION_QUIT = 4;
+	private static final int OPTION_QUIT = 5;
+	private static final int OPTION1_QUIT = 2;
+	private static final int OPTION2_QUIT = 3;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -13,7 +15,95 @@ public class C206_CaseStudy {
 	ArrayList<User> userList = new ArrayList<User>();
 	ArrayList<Deal> dealList = new ArrayList<Deal>();
 
+	userList.add(new User("ad", "ad", "ad", "Admin"));
+	userList.add(new User("m", "m", "m", "Member"));
+
+	int option = 0;
+	int option1 = 0;
+
+	while (option != OPTION2_QUIT) {
+		C206_CaseStudy.menu();
+		User login = null; // default is null
+		option = Helper.readInt("Enter an option > ");
+
+		if (option == 1) {
+			login = loginUser(userList);
+			if (login != null) {
+				if (login.getRole().equals("Admin")) {
+					System.out.println("Welcome Admin!");
+					while (option1 != OPTION_QUIT) {
+						UserDB.showAdminMenu();
+						option1 = Helper.readInt("Enter an option > ");
+						if (option1 == 1) {
+							// Add user
+							String name = Helper.readString("Enter your name > ");
+							String password = Helper.readString("Enter your password > ");
+							String email = Helper.readString("Enter your email > ");
+							User NewUser = new User(name, password, email, "Member");
+							UserDB.addUser(userList, NewUser);
+						} else if (option1 == 2) {
+							// View all user
+							UserDB.viewAllUser(userList);
+						} else if (option1 == 3) {
+							// Delete user based on EMAIL
+							String delete = Helper.readString("Enter your email to delete the user > ");
+							UserDB.delUser(delete, userList);
+						} else if (option1 == 4) {
+							// Search user account based on email
+							String sEmail = Helper.readString("Enter user email to search > ");
+							UserDB.searchUser(sEmail, userList);
+						} else if (option1 == OPTION_QUIT) {
+							System.out.println("You have been successfully logged out!");
+						}
+					}
+				} else if (login.getRole().equals("Member")) {
+					System.out.println("Welcome Member!");
+					while (option1 != OPTION1_QUIT) {
+						UserDB.showUserMenu();
+						option1 = Helper.readInt("Enter an option > ");
+						if (option1 == 1) {
+							UserDB.updateUser(userList);
+
+						} else if (option1 == OPTION1_QUIT) {
+							System.out.println("You have been successfully logged out!");
+						}
+					}
+				}
+			}
+		} else if (option == OPTION2_QUIT) {
+			System.out.println("Thank you for shopping with us!");
+		}
 	}
+}
+
+// Coded by WM
+public static User loginUser(ArrayList<User> userList) { // check login user based on email and password.
+	String email = Helper.readString("Enter your email > ");
+	String password = Helper.readString("Enter your password >");
+	for (int i = 0; i < userList.size(); i++) {
+		if (email.equals(userList.get(i).getEmail()) && (password.equals(userList.get(i).getPassword()))) {
+			return userList.get(i);
+		}
+	}
+	return null;
+
+}
+
+public static void menu() {
+	C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
+	System.out.println("1. Login");
+	System.out.println("2. Register");
+	System.out.println("3. Quit");
+	Helper.line(80, "=");
+
+}
+
+public static void setHeader(String header) {
+	Helper.line(80, "=");
+	System.out.println(header);
+	Helper.line(80, "=");
+}
+
 
 }
 

@@ -84,8 +84,9 @@ public class CategoryTest {
 		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
 		
 		//Test that category will be able to search
-		CategoryDB.searchCategory(category1.getName());
-		assertSame("Test that category will be able to search", category1, CategoryDB.categoryList);
+		String searchCat = Helper.readString("Enter category name to search: ");
+		CategoryDB.searchCategory(searchCat);
+		assertSame("Test that category will be able to search", searchCat, CategoryDB.categoryList);
 
 	}
 	
@@ -100,8 +101,9 @@ public class CategoryTest {
 		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
 		
 		//Test that category will be able to update
-		CategoryDB.searchCategory(category1.getName());
-		assertSame("Test that category will be able to search", category1.getName(), CategoryDB.categoryList);
+		String updateCat = Helper.readString("Enter category name to search: ");
+		CategoryDB.updateCategory(updateCat);
+		assertSame("Test that category will be able to search", updateCat, CategoryDB.categoryList);
 
 	}
 

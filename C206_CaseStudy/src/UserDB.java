@@ -75,7 +75,8 @@ public class UserDB {
 		System.out.println("2. View all user");
 		System.out.println("3. Delete user by email");
 		System.out.println("4. Search user by email");
-		System.out.println("5. Quit");
+		System.out.println("5. Display category menu");
+		System.out.println("6. Quit");
 		Helper.line(80, "=");
 	}
 

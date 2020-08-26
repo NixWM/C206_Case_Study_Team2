@@ -5,7 +5,7 @@ public class C206_CaseStudy {
 	
 	
 	
-	private static final int OPTION_QUIT = 5;
+	private static final int OPTION_QUIT = 6;
 	private static final int OPTION1_QUIT = 2;
 	private static final int OPTION2_QUIT = 3;
 
@@ -14,12 +14,14 @@ public class C206_CaseStudy {
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	ArrayList<User> userList = new ArrayList<User>();
 	ArrayList<Deal> dealList = new ArrayList<Deal>();
+	ArrayList<Category> categoryList = new ArrayList<Category>();
 
 	userList.add(new User("ad", "ad", "ad", "Admin"));
 	userList.add(new User("m", "m", "m", "Member"));
 
 	int option = 0;
 	int option1 = 0;
+	int categoryOption = 0;
 
 	while (option != OPTION2_QUIT) {
 		C206_CaseStudy.menu();
@@ -33,6 +35,7 @@ public class C206_CaseStudy {
 					System.out.println("Welcome Admin!");
 					while (option1 != OPTION_QUIT) {
 						UserDB.showAdminMenu();
+						
 						option1 = Helper.readInt("Enter an option > ");
 						if (option1 == 1) {
 							// Add user
@@ -52,6 +55,13 @@ public class C206_CaseStudy {
 							// Search user account based on email
 							String sEmail = Helper.readString("Enter user email to search > ");
 							UserDB.searchUser(sEmail, userList);
+							
+						} else if (option1 == 5) {
+							categoryMenu();
+							
+							
+							
+						
 						} else if (option1 == OPTION_QUIT) {
 							System.out.println("You have been successfully logged out!");
 						}
@@ -104,6 +114,57 @@ public static void setHeader(String header) {
 	Helper.line(80, "=");
 }
 
+private static void categoryMenu () {
 
+	System.out.println("");
+	System.out.println("1. View all category");
+	System.out.println("2. Add Category");
+	System.out.println("3. Delete category");
+	System.out.println("4. Search category");
+	System.out.println("5. Update category");
+	System.out.println("6. Quit");
+	int categoryOption = -1;
+
+	while(categoryOption != 6) {
+		categoryOption = Helper.readInt("Enter a category option > ");
+		
+		if (categoryOption == 1) {
+			// View all category
+			CategoryDB.display(CategoryDB.categoryList);
+		} else if (categoryOption == 2) {
+			// Add category
+			String catName = Helper.readString("Enter new category name: ");
+			Category c1 = new Category(catName);
+			CategoryDB.categoryList.add(c1);
+			System.out.println(c1+" is add!");
+			CategoryDB.viewAllCategory(CategoryDB.categoryList);
+			
+		} else if (categoryOption == 3) {
+			// Delete Category
+			String catName = Helper.readString("Enter category name to delete: ");
+			CategoryDB.delCategory(catName);
+			
+		} else if (categoryOption == 4) {
+				// Search Category
+			
+			String catName = Helper.readString("Enter category name to search: ");
+			CategoryDB.searchCategory(catName);
+				
+		} else if (categoryOption == 5) {
+				// Update Category
+			String catName = Helper.readString("Enter category name to edit: ");
+			CategoryDB.updateCategory(catName);
+		} else if (categoryOption == 6) {
+			// Quit
+			System.out.println("Exit");
+		} else {
+			System.out.println("Invalid type");
+		}
+		
+		
+	}
+
+
+}
 }
 

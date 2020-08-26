@@ -16,7 +16,7 @@ public class Category {
 	}
 
 	public String toString() {
-		return "Category [name=" + name + "]";
+		return "Category " + name ;
 	}
 
 

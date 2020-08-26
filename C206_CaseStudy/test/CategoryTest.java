@@ -72,5 +72,37 @@ public class CategoryTest {
 		assertEquals("Test that the size of categoryList is not 0 after deleting a category", 0, CategoryDB.categoryList.size());
 
 	}
+	
+	@Test
+	public void searchCategoryTest() {
+		//Test that categoryList is NOT NULL
+		assertNotNull("Test that categoryList is NOT null", CategoryDB.categoryList);
+		
+		//Test that categoryList is not empty
+		CategoryDB.addCategory(category1);
+		CategoryDB.addCategory(category2);
+		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
+		
+		//Test that category will be able to search
+		CategoryDB.searchCategory(category1.getName());
+		assertSame("Test that category will be able to search", category1, CategoryDB.categoryList);
+
+	}
+	
+	@Test
+	public void updateCategoryTest() {
+		//Test that categoryList is NOT NULL
+		assertNotNull("Test that categoryList is NOT null", CategoryDB.categoryList);
+		
+		//Test that categoryList is not empty
+		CategoryDB.addCategory(category1);
+		CategoryDB.addCategory(category2);
+		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
+		
+		//Test that category will be able to update
+		CategoryDB.searchCategory(category1.getName());
+		assertSame("Test that category will be able to search", category1.getName(), CategoryDB.categoryList);
+
+	}
 
 }

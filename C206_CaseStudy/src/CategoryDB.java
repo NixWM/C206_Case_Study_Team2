@@ -4,6 +4,10 @@ public class CategoryDB {
 	
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
 	
+	
+	Category cat1 = new Category("E-Books");
+	
+	
 
 	public static void addCategory(Category category) {
 

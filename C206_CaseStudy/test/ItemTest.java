@@ -46,7 +46,7 @@ public class ItemTest {
 		
 		//Check if the list of items retrieved is empty
 		String allItems = itemDatabase.retrieveAllItems(itemDatabase.itemList);
-		String testOutput = "Item List \n";
+		String testOutput = "Item List \n ";
 		testOutput += "";
 		assertEquals("Test if the list of category retrieved is empty",testOutput, allItems);
 		

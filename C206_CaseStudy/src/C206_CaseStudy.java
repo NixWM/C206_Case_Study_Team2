@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	ArrayList<User> userList = new ArrayList<User>();
 	ArrayList<Deal> dealList = new ArrayList<Deal>();
-	ArrayList<Category> categoryList = new ArrayList<Category>();
+//	ArrayList<Category> categoryList = new ArrayList<Category>();
 
 	userList.add(new User("ad", "ad", "ad", "Admin"));
 	userList.add(new User("m", "m", "m", "Member"));
@@ -117,15 +117,11 @@ public static void setHeader(String header) {
 
 // Coded by Qiu Rong at 25/08/2020
 // Edited code by Qiu Rong at 26/08/2020
+// Edited code again by Qiu Rong at 27/08/2020
 private static void categoryMenu () {
 
-	System.out.println("");
-	System.out.println("1. View all category");
-	System.out.println("2. Add Category");
-	System.out.println("3. Delete category");
-	System.out.println("4. Search category");
-	System.out.println("5. Update category");
-	System.out.println("6. Quit");
+	
+	CategoryDB.showCategoryMenu();
 	int categoryOption = -1;
 
 	while(categoryOption != 6) {
@@ -158,7 +154,6 @@ private static void categoryMenu () {
 			String catName = Helper.readString("Enter category name to edit: ");
 			CategoryDB.updateCategory(catName);
 			
-			CategoryDB.viewAllCategory(CategoryDB.categoryList);
 		} else if (categoryOption == 6) {
 			// Quit
 			System.out.println("Exit");

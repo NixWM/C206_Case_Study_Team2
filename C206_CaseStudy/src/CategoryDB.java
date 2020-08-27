@@ -86,7 +86,7 @@ public class CategoryDB {
 		boolean found = false;
 		Category cat = null;
 		for (int i = 0; i < categoryList.size(); i++){
-	          if (categoryList.get(i).getName().contains(category)){
+	          if (categoryList.get(i).getName().equalsIgnoreCase(category)){
 	        	  found = true;
 	        	  cat= categoryList.get(i);
 	        	  } 
@@ -94,7 +94,7 @@ public class CategoryDB {
 		if (found == true) {
 			String catNewName = Helper.readString("Enter new category name to change: ");
 			cat.setName(catNewName);
-			System.out.println(catNewName+"updated!");
+			System.out.println(catNewName+" updated!");
 		} else {
 			System.out.println("You have entered an invalid category name.");
 		}

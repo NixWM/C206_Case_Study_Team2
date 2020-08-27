@@ -74,7 +74,7 @@ public class C206_CaseStudy {
 						// If role = Buyer, login as Buyer user.
 					} else if (login.getRole().equalsIgnoreCase("buyer")) {
 						System.out.println("Welcome Member!(Buyer)");
-						while (option1 != OPTION1_QUIT) {
+						while (option1 != OPTION2_QUIT) {
 							UserDB.showBuyerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {

@@ -25,11 +25,11 @@ public class itemDatabase {
 		}
 	}
 
-	public static void delItem(String item) {
+	public static void delItem(String item1) {
 		Item a = null;
 		boolean b = false;
 		for(int c = 0; c < itemList.size(); c++) {
-			if(itemList.get(c).getName().equalsIgnoreCase(item)) {
+			if(itemList.get(c).getName().equalsIgnoreCase(item1)) {
 				b = true;
 				a = itemList.get(c);
 			}
@@ -41,9 +41,7 @@ public class itemDatabase {
 		else {
 			System.out.print("You have entered an invalid name");
 		}
-	}
-
-	
+	}	
 	
 	
 }

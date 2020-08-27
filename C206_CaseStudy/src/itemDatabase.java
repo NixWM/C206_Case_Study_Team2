@@ -18,11 +18,29 @@ public class itemDatabase {
 		}
 		return output;
 	}
+	
+	public static void display(ArrayList<Item> itemList) {
+		if(itemList != null) {
+			System.out.print(retrieveAllItems(itemList));
+		}
+	}
 
-
-	public static void delItem(Item item) {
-		
-		itemList.remove(item);
+	public static void delItem(String item) {
+		Item a = null;
+		boolean b = false;
+		for(int c = 0; c < itemList.size(); c++) {
+			if(itemList.get(c).getName().equalsIgnoreCase(item)) {
+				b = true;
+				a = itemList.get(c);
+			}
+		}
+		if(b == true) {
+			itemList.remove(a);
+			System.out.print("You have successfully deleted " + a);
+		}
+		else {
+			System.out.print("You have entered an invalid name");
+		}
 	}
 
 	

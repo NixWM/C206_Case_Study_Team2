@@ -64,7 +64,7 @@ public class ItemTest {
 	public void delItemTest() {
 		assertNotNull("Test that itemList is Not null", itemDatabase.itemList);
 		
-		itemDatabase.delItem(item1);
+		itemDatabase.delItem("item1");
 		assertEquals("Test that the size of the itemList is 0 after deleting the item", 0, itemDatabase.itemList.size());
 	}
 }

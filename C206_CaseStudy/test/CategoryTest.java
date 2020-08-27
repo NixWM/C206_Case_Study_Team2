@@ -84,7 +84,7 @@ public class CategoryTest {
 		//Test that categoryList is not empty
 		CategoryDB.addCategory(category1);
 		CategoryDB.addCategory(category2);
-		String testOutput="";
+
 		assertNotEquals("Test that categoryList is not empty", category1, CategoryDB.categoryList);
 		
 		//Test that category will be able to search

@@ -57,6 +57,7 @@ public class C206_CaseStudy {
 							UserDB.searchUser(sEmail, userList);
 							
 						} else if (option1 == 5) {
+							//Added by Qiu Rong at 26/08/2020
 							categoryMenu();
 							
 							
@@ -114,6 +115,8 @@ public static void setHeader(String header) {
 	Helper.line(80, "=");
 }
 
+// Coded by Qiu Rong at 25/08/2020
+// Edited code by Qiu Rong at 26/08/2020
 private static void categoryMenu () {
 
 	System.out.println("");
@@ -154,6 +157,8 @@ private static void categoryMenu () {
 				// Update Category
 			String catName = Helper.readString("Enter category name to edit: ");
 			CategoryDB.updateCategory(catName);
+			
+			CategoryDB.viewAllCategory(CategoryDB.categoryList);
 		} else if (categoryOption == 6) {
 			// Quit
 			System.out.println("Exit");

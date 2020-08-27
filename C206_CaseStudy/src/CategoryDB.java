@@ -94,6 +94,7 @@ public class CategoryDB {
 		if (found == true) {
 			String catNewName = Helper.readString("Enter new category name to change: ");
 			cat.setName(catNewName);
+			System.out.println(catNewName+"updated!");
 		} else {
 			System.out.println("You have entered an invalid category name.");
 		}

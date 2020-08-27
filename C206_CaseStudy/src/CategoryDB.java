@@ -13,11 +13,14 @@ public class CategoryDB {
 	
 	public static String viewAllCategory(ArrayList<Category> categoryList) {
 		String output = "";
+		
+		output += "\n======Category List======\n";
 
 		for (int i = 0; i < categoryList.size(); i++) {
-
+			
 			output += categoryList.get(i).getName()+"\n";
 		}
+		
 		return output;
 	}
 	
@@ -52,12 +55,17 @@ public class CategoryDB {
 	
 	public static void showCategoryMenu() {
 		System.out.println("");
+		//Added by Qiu Rong on 27/08/2020
+		C206_CaseStudy.setHeader("Category Menu");
+		//Added by Qiu Rong on 25/08/2020
 		System.out.println("1. View all category");
 		System.out.println("2. Add Category");
 		System.out.println("3. Delete category");
 		System.out.println("4. Search category");
 		System.out.println("5. Update category");
 		System.out.println("6. Quit");
+		//Added by Qiu Rong on 27/08/2020
+		System.out.println("");
 	}
 
 	public static void searchCategory(String catName) {

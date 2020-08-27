@@ -47,8 +47,10 @@ public class CategoryTest {
 		assertNotNull("Test if CategoryList is not null", CategoryDB.categoryList);
 		
 		//Test if the list of category retrieved is empty
+		
 		String allCategory = CategoryDB.viewAllCategory(CategoryDB.categoryList);
-		String testOutput = "";
+		String testOutput = "\n======Category List======\n";
+		testOutput += "";
 		assertEquals("Test if the list of category retrieved is empty",testOutput, allCategory);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
@@ -58,10 +60,11 @@ public class CategoryTest {
 				
 		//test if the expected output string same as the list of category retrieved from the categoryDB	
 		allCategory= CategoryDB.viewAllCategory(CategoryDB.categoryList);
-		testOutput = "Electronic\n";
-		testOutput += "Accessories\n";
+		String testOutput2 = "\n======Category List======\n";
+		testOutput2 += "Electronic\n";
+		testOutput2 += "Accessories\n";
 			
-		assertEquals("Test that viewAllCategoryList", testOutput, allCategory);
+		assertEquals("Test that viewAllCategoryList", testOutput2, allCategory);
 		
 	}
 	

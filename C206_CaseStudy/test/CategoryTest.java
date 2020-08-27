@@ -1,12 +1,15 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class CategoryTest {
 
-	private Category category1, category2;
+	private Category category1;
+	private Category category2;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -81,12 +84,16 @@ public class CategoryTest {
 		//Test that categoryList is not empty
 		CategoryDB.addCategory(category1);
 		CategoryDB.addCategory(category2);
-		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
+		String testOutput="";
+		assertNotEquals("Test that categoryList is not empty", category1, CategoryDB.categoryList);
 		
 		//Test that category will be able to search
-		String searchCat = Helper.readString("Enter category name to search: ");
-		CategoryDB.searchCategory(searchCat);
-		assertSame("Test that category will be able to search", searchCat, CategoryDB.categoryList);
+//		String searchCat = Helper.readString("Enter category name to search: ");
+		CategoryDB.searchCategory(category1.toString());
+		
+		
+//		CategoryDB.searchCategory(CategoryDB.categoryList);
+		assertNotSame("Test that category will be able to search", category1, CategoryDB.categoryList.contains(category1));
 
 	}
 	
@@ -103,8 +110,7 @@ public class CategoryTest {
 		//Test that category will be able to update
 		String updateCat = Helper.readString("Enter category name to search: ");
 		CategoryDB.updateCategory(updateCat);
-		assertSame("Test that category will be able to search", updateCat, CategoryDB.categoryList);
-
+		assertNotSame("Test that category will be able to search", updateCat, CategoryDB.categoryList);
 	}
 
 }

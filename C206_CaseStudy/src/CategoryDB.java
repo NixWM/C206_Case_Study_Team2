@@ -60,23 +60,23 @@ public class CategoryDB {
 		System.out.println("6. Quit");
 	}
 
-	public static void searchCategory(String category) {
+	public static void searchCategory(String catName) {
 		
 		boolean found = false;
 		Category cat = null;
 		
 		for (int i = 0; i < categoryList.size(); i++){
-	          if (categoryList.get(i).getName().contains(category)){
+	          if (categoryList.get(i).getName().contains(catName)){
 	        	  found = true;
 	        	  cat= categoryList.get(i);
 	        	  } 
 	       }
+		
 		if (found == true) {
 			System.out.println(cat.toString());
 		} else {
 			System.out.println("You have entered an invalid category name.");
 		}
-		
 	      
 		
 		

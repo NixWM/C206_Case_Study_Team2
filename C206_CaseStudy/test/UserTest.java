@@ -46,28 +46,17 @@ public class UserTest {
 	@Test
 	public void ViewUserTest() {
 
-		// Test if user list is not null but empty -boundary
-		assertNotNull("Test if there is valid user arraylist to retrieve user", userList);
-
 		// Test if size of userList is 0 before viewing the users
 		assertEquals("Test if size of userList is 0 before viewing the users", 0, userList.size());
 
 		//Test if the list of user retrieved is empty
-		String allUser = UserDB.viewAllUser(UserDB.userList);
-		String testOutput = "";
-		assertEquals("Test if the list of user retrieved is empty",testOutput, allUser);
-		
-		// Given an empty list, after adding 2 items, test if the size of the list is 2
-		// - normal
 		UserDB.userList.add(user);
 		UserDB.userList.add(user2);
 		assertEquals("Test that user arraylist size is 2", 2, UserDB.userList.size());
-		
-		//test if the expected output string same as the list of category retrieved from the categoryDB	
-		allUser = UserDB.viewAllUser(UserDB.userList);
-		testOutput = "";
-		assertEquals("Test if the list of user retrieved is empty",testOutput, allUser);
-		
+		String allUser = UserDB.viewAllUser(UserDB.userList);
+		String testOutput = "";
+		assertEquals("Test if the list of user retrieved is 2",testOutput, allUser);
+		System.out.println(userList);
 
 	}
 
@@ -78,7 +67,7 @@ public class UserTest {
 		assertEquals("Test if user list size is 1 before deleting the user", 1, userList.size());
 		System.out.println(String.format("%-1s %-1s %-1s %-1s", userList.get(0).getName(),
 				userList.get(0).getPassword(), userList.get(0).getEmail(), userList.get(0).getRole()));
-		; // test 1
+		;
 			// Test if user list is 0
 		userList.remove(0);
 		assertEquals("Test if user list is 0", 0, userList.size());
@@ -100,7 +89,8 @@ public class UserTest {
 		}
 		assertEquals("Test that user arraylist size is 2", 2, userList.size());
 		// Test if user search by email
-
+		String search = Helper.readString("Search user based on email > ");
+		UserDB.searchUser(search, userList);
 	}
 
 	@Test

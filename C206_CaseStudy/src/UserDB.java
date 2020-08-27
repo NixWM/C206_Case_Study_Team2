@@ -79,5 +79,18 @@ public class UserDB {
 		System.out.println("6. Quit");
 		Helper.line(80, "=");
 	}
+	
+	//For testing purposes
+	public static void showBuyerMenu() {
+		System.out.println("1. Update user");
+		System.out.println("2. Search by item");
+		System.out.println("3. Quit");
+	}
+	//For testing purposes
+	public static void showSellerMenu() {
+		System.out.println("1. Update user");
+		System.out.println("2.Cancel buyer auction bid");
+		System.out.println("3. Quit");
+	}
 
 }

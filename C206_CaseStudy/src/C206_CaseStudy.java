@@ -22,7 +22,9 @@ public class C206_CaseStudy {
 	int option = 0;
 	int option1 = 0;
 	int categoryOption = 0;
+	int maxLoginTries = 0;
 
+	//coded by Wei Ming
 	while (option != OPTION2_QUIT) {
 		C206_CaseStudy.menu();
 		User login = null; // default is null
@@ -80,6 +82,16 @@ public class C206_CaseStudy {
 						}
 					}
 				}
+				//Coded by Wei Ming
+			}else if(login==null && maxLoginTries ==0) {
+				maxLoginTries ++;
+				System.out.println("Incorrect email or password.\nYou have 2 more tries.");
+			}else if(login ==null && maxLoginTries==1) {
+				maxLoginTries ++;
+				System.out.println("Incorrect email or password.\nYou have 1 more tries.");
+			}else if(login ==null && maxLoginTries==2) {
+				System.out.println("You've reached the maximum logon attempts\nPlease try again later.");
+				System.exit(0);
 			}
 		} else if (option == OPTION2_QUIT) {
 			System.out.println("Thank you for shopping with us!");
@@ -87,7 +99,7 @@ public class C206_CaseStudy {
 	}
 }
 
-// Coded by WM
+// Coded by Wei Ming
 public static User loginUser(ArrayList<User> userList) { // check login user based on email and password.
 	String email = Helper.readString("Enter your email > ");
 	String password = Helper.readString("Enter your password >");

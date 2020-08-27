@@ -12,7 +12,7 @@ public class UserDB {
 	}
 
 	public static String viewAllUser(ArrayList<User> userList) {
-		String output="";
+		String output = "";
 		System.out.println("==================================USER LIST==================================");
 		System.out.println(String.format("%-20s %-20s %-20s %-20s", "NAME", "PASSWORD", "EMAIL", "ROLE"));
 		for (int i = 0; i < userList.size(); i++) {
@@ -53,15 +53,20 @@ public class UserDB {
 			if (updName.equals(userList.get(i).getName()) && (upPass.equals(userList.get(i).getPassword()))) {
 				System.out.println("============================ENTER NEW NAME AND PASSWORD=========================");
 				String updatedName = Helper.readString("Enter your new name > ");
-				String updatedPass = Helper.readString("Enter your new password > ");			
-				userList.get(i).setName(updatedName);
-				userList.get(i).setPassword(updatedPass);
-				System.out.println("== Name and password updated! ==");
-			}	
+				String updatedPass = Helper.readString("Enter your new password > ");
+				if (updatedName.equals(updName)) {
+					System.out.println("Sorry, your name is the same.");
+				} else if (updatedPass.equals(upPass)) {
+					System.out.println("Sorry, your password is the same.");
+				} else {
+					userList.get(i).setName(updatedName);
+					userList.get(i).setPassword(updatedPass);
+					System.out.println("== Name and password updated! ==");
+				}
+
+			}
 		}
 	}
-	
-	
 
 	public static void showUserMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
@@ -69,6 +74,7 @@ public class UserDB {
 		System.out.println("2. Quit");
 		Helper.line(80, "=");
 	}
+
 	public static void showAdminMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 		System.out.println("1. Add user");
@@ -79,14 +85,15 @@ public class UserDB {
 		System.out.println("6. Quit");
 		Helper.line(80, "=");
 	}
-	
-	//For testing purposes
+
+	// For testing purposes
 	public static void showBuyerMenu() {
 		System.out.println("1. Update user");
 		System.out.println("2. Search by item");
 		System.out.println("3. Quit");
 	}
-	//For testing purposes
+
+	// For testing purposes
 	public static void showSellerMenu() {
 		System.out.println("1. Update user");
 		System.out.println("2.Cancel buyer auction bid");

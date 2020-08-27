@@ -56,7 +56,6 @@ public class UserTest {
 		String allUser = UserDB.viewAllUser(UserDB.userList);
 		String testOutput = "";
 		assertEquals("Test if the list of user retrieved is 2",testOutput, allUser);
-		System.out.println(userList);
 
 	}
 
@@ -99,6 +98,8 @@ public class UserTest {
 		assertNotNull(userList);
 		// Test if user able to retreive their name and password and update the
 		// accordingly to the user input.
+		userList.add(user);
+		UserDB.updateUser(userList);
 	}
 
 }

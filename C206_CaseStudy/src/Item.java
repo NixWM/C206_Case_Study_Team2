@@ -6,8 +6,13 @@ public class Item {
 	private String endDate;
 	private double bidIncrement;
 	
-	public Item(String name) {
+	public Item(String name, String desc, double minPrice, String startDate, String endDate, double bidIncrement) {
 		this.name = name;
+		this.desc = desc;
+		this.minPrice = minPrice;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.bidIncrement = bidIncrement;
 	}
 	public String getName() {
 		return name;
@@ -48,8 +53,7 @@ public class Item {
 	}
 	@Override
 	public String toString() {
-		return "Item [name=" + name + ", desc=" + desc + ", minPrice=" + minPrice + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", bidIncrement=" + bidIncrement + "]";
+		return "Item name: " + name + " \n Description: " + desc + " \nMinimum Price: " + minPrice + " \nStart Date: " + startDate + " \nEnd Date: " + endDate + " \nBid Increment: " + bidIncrement;
 	}
 	
 	

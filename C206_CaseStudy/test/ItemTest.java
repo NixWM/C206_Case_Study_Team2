@@ -13,7 +13,7 @@ public class ItemTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		item1 = new Item("");
+		
 		itemList = new ArrayList<Item>();
 	}
 
@@ -45,17 +45,19 @@ public class ItemTest {
 		assertNotNull("Test itemLIst is not null", itemDatabase.itemList);
 		
 		//Check if the list of items retrieved is empty
-		String allItems = itemDatabase.retrieveAllItems(itemList);
-		String testOutput = "";
-		assertEquals("Check if all items are retrieved", testOutput, allItems);
+		String allItems = itemDatabase.retrieveAllItems(itemDatabase.itemList);
+		String testOutput = "Item List \n";
+		testOutput += "";
+		assertEquals("Test if the list of category retrieved is empty",testOutput, allItems);
 		
 		//After adding more items, check whether the itemList increase
-		itemDatabase.addItem(item1);
+		//itemDatabase.addItem(item1);
+		
 		assertEquals("Check array list size is 2", 2, itemDatabase.itemList.size());
 		
 		//test the output string is the same as the list of items retrieved
 		allItems = itemDatabase.retrieveAllItems(itemDatabase.itemList);
-		testOutput = "";
+		testOutput += "";
 		
 		assertEquals("Test to retrieve and view all category", testOutput, allItems);
 	}
@@ -64,7 +66,15 @@ public class ItemTest {
 	public void delItemTest() {
 		assertNotNull("Test that itemList is Not null", itemDatabase.itemList);
 		
-		itemDatabase.delItem("item1");
+		//check if list of items is empty
+		String allItems = itemDatabase.retrieveAllItems(itemList);
+		String testOutput = "";
+		assertEquals("Check if all items are retrieved", testOutput, allItems);
+		
+		//check if item in the list is deleted properly
+		Item item2 = new Item("Laptop", "New Laptop", 400.00, "14 August 2020", "20 August 2020", 0.50);
+		
+		itemDatabase.delItem(item2);
 		assertEquals("Test that the size of the itemList is 0 after deleting the item", 0, itemDatabase.itemList.size());
 	}
 }

@@ -1,9 +1,9 @@
+
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int OPTION_QUIT = 6;
-	private static final int OPTION1_QUIT = 2;
+	private static final int OPTION_QUIT = 5;
 	private static final int OPTION2_QUIT = 3;
 
 	public static void main(String[] args) {
@@ -15,10 +15,7 @@ public class C206_CaseStudy {
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
 		userList.add(new User("seller", "seller", "seller@seller", "seller"));
-		
-		itemDatabase.adddItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
-		itemDatabase.adddItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
-		
+
 		int option = 0;
 		int option1 = 0;
 		int categoryOption = 0;
@@ -44,29 +41,16 @@ public class C206_CaseStudy {
 
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
-								// Add user
-								String name = Helper.readString("Enter user name > ");
-								String password = Helper.readString("Enter user password > ");
-								String email = Helper.readString("Enter user email > ");
-								String role = Helper.readString("Enter user role > ");
-								User NewUser = new User(name, password, email, role);
-								UserDB.addUser(userList, NewUser);
-							} else if (option1 == 2) {
-								// View all user
-								UserDB.viewAllUser(userList);
-							} else if (option1 == 3) {
-								// Delete user based on EMAIL
-								String delete = Helper.readString("Enter your email to delete the user > ");
-								UserDB.delUser(delete, userList);
-							} else if (option1 == 4) {
-								// Search user account based on email
-								String sEmail = Helper.readString("Enter user email to search > ");
-								UserDB.searchUser(sEmail, userList);
+								//display user menu
+								userMenu(userList);
 
-							} else if (option1 == 5) {
+							} else if (option1 == 2) {
 								// Added by Qiu Rong at 26/08/2020
 								categoryMenu();
 
+							} else if (option1 == 3) {
+								// Michell code for (Deal menu here)
+								
 							} else if (option1 == OPTION_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
@@ -80,7 +64,7 @@ public class C206_CaseStudy {
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
 
-							} else if (option1 == OPTION1_QUIT) {
+							} else if (option1 == OPTION2_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
 						}
@@ -132,7 +116,8 @@ public class C206_CaseStudy {
 	}
 
 // Coded by Wei Ming
-	public static User loginUser(ArrayList<User> userList) { // check login user based on email and password.
+	// check login user based on email and password.
+	public static User loginUser(ArrayList<User> userList) { 
 		String email = Helper.readString("Enter your email > ");
 		String password = Helper.readString("Enter your password >");
 		for (int i = 0; i < userList.size(); i++) {
@@ -207,4 +192,48 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+	// Method userMenu added
+	public static void userMenu(ArrayList<User> userList) {
+		int userOption = 0;
+		while (userOption != OPTION_QUIT) {
+			UserDB.showUserMenu();
+			userOption = Helper.readInt("Enter a user option > ");
+
+			if (userOption == 1) {
+				// Add User
+				String name = Helper.readString("Enter user name > ");
+				String password = Helper.readString("Enter user password > ");
+				String email = Helper.readString("Enter user email > ");
+				String role = Helper.readString("Enter user role (Buyer/Seller) > ");
+				if ((role.equalsIgnoreCase("Buyer")) && (!role.equalsIgnoreCase("Admin"))) {
+					User NewUser = new User(name, password, email, role);
+					UserDB.addUser(userList, NewUser);
+				} else if ((role.equalsIgnoreCase("Seller")) && (!role.equalsIgnoreCase("Admin"))) {
+					User NewUser = new User(name, password, email, role);
+					UserDB.addUser(userList, NewUser);
+				} else {
+					System.out.println("Sorry, invalid role detected");
+				}
+			} else if (userOption == 2) {
+				// View all user
+				UserDB.viewAllUser(userList);
+			} else if (userOption == 3) {
+				// Delete user based on EMAIL
+				String delete = Helper.readString("Enter your email to delete the user > ");
+				UserDB.delUser(delete, userList);
+
+			} else if (userOption == 4) {
+				// Search user account based on email
+				String sEmail = Helper.readString("Enter user email to search > ");
+				UserDB.searchUser(sEmail, userList);
+
+			} else if (userOption == OPTION_QUIT) {
+				// back to main menu
+				System.out.println("== Back to main menu ==");
+			}
+		}
+
+	}
+
 }

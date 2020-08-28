@@ -68,21 +68,21 @@ public class UserDB {
 		}
 	}
 
-	public static void showUserMenu() {
+	public static void showAdminMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
-		System.out.println("1. Update user");
-		System.out.println("2. Quit");
+		System.out.println("1. Display user menu");
+		System.out.println("2. Display category menu");
+		System.out.println("3. Display deal menu");
 		Helper.line(80, "=");
 	}
 
-	public static void showAdminMenu() {
+	public static void showUserMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 		System.out.println("1. Add user");
 		System.out.println("2. View all user");
 		System.out.println("3. Delete user by email");
 		System.out.println("4. Search user by email");
-		System.out.println("5. Display category menu");
-		System.out.println("6. Quit");
+		System.out.println("5. Back to menu");
 		Helper.line(80, "=");
 	}
 
@@ -99,5 +99,6 @@ public class UserDB {
 		System.out.println("2.Cancel buyer auction bid");
 		System.out.println("3. Quit");
 	}
+
 
 }

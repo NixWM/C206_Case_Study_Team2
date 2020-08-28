@@ -1,4 +1,5 @@
 public class Item {
+	
 	private String name;
 	private String desc;
 	private double minPrice;
@@ -14,46 +15,36 @@ public class Item {
 		this.endDate = endDate;
 		this.bidIncrement = bidIncrement;
 	}
+
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getDesc() {
 		return desc;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+
 	public double getMinPrice() {
 		return minPrice;
 	}
-	public void setMinPrice(double minPrice) {
-		this.minPrice = minPrice;
-	}
+
 	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+
 	public String getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+
 	public double getBidIncrement() {
 		return bidIncrement;
 	}
-	public void setBidIncrement(double bidIncrement) {
-		this.bidIncrement = bidIncrement;
-	}
-	@Override
+
 	public String toString() {
-		return "Item name: " + name + " \n Description: " + desc + " \nMinimum Price: " + minPrice + " \nStart Date: " + startDate + " \nEnd Date: " + endDate + " \nBid Increment: " + bidIncrement;
+		String output = "";
+		output += String.format("%-20s %-30s $%-15.2f %-22s %-22s $%.2f\n", 
+				this.name, this.desc, this.minPrice, this.startDate, this.endDate, this.bidIncrement);
+		return output;
 	}
 	
 	

@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-=======
-
 import java.util.ArrayList;
 
->>>>>>> branch 'master' of https://github.com/NixWM/C206_Case_Study_Team2.git
 public class C206_CaseStudy {
-<<<<<<< HEAD
-		
-		
-=======
 
 	private static final int OPTION_QUIT = 6;
 	private static final int OPTION1_QUIT = 2;
@@ -19,12 +11,14 @@ public class C206_CaseStudy {
 
 		ArrayList<User> userList = new ArrayList<User>();
 
-
-		//In Sequences, (Name,Password,Email,Role)
+		// In Sequences, (Name,Password,Email,Role)
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
 		userList.add(new User("seller", "seller", "seller@seller", "seller"));
-
+		
+		itemDatabase.adddItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
+		itemDatabase.adddItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
+		
 		int option = 0;
 		int option1 = 0;
 		int categoryOption = 0;
@@ -36,13 +30,13 @@ public class C206_CaseStudy {
 			User login = null; // default is null
 			option = Helper.readInt("Enter an option > ");
 
-			//if option is 1 (Login user)
+			// if option is 1 (Login user)
 			if (option == 1) {
-				//(takes in the method of loginUser to userList)
+				// (takes in the method of loginUser to userList)
 				login = loginUser(userList);
-				//(Checks if login is not null, then proceed to login)
+				// (Checks if login is not null, then proceed to login)
 				if (login != null) {
-					//(Checks according to the roles)
+					// (Checks according to the roles)
 					if (login.getRole().equals("Admin")) {
 						System.out.println("Welcome Admin!");
 						while (option1 != OPTION_QUIT) {
@@ -90,7 +84,7 @@ public class C206_CaseStudy {
 								System.out.println("You have been successfully logged out!");
 							}
 						}
-						//if role = Seller, login as Seller user.
+						// if role = Seller, login as Seller user.
 					} else if (login.getRole().equalsIgnoreCase("seller")) {
 						System.out.println("Welcome Member!(Seller)");
 						while (option1 != OPTION2_QUIT) {
@@ -128,7 +122,7 @@ public class C206_CaseStudy {
 				} else if ((role.equalsIgnoreCase("Seller")) && (!role.equalsIgnoreCase("Admin"))) {
 					User NewUser = new User(name, password, email, role);
 					UserDB.addUser(userList, NewUser);
-				}else {
+				} else {
 					System.out.println("Sorry, invalid role detected");
 				}
 			} else if (option == OPTION2_QUIT) {
@@ -164,20 +158,18 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "=");
 	}
-	
+
 	// Coded by Qiu Rong at 25/08/2020
 	// Edited code by Qiu Rong at 26/08/2020
 	// Edited code again by Qiu Rong at 27/08/2020
-	private static void categoryMenu () {
+	private static void categoryMenu() {
 
-		
 		CategoryDB.showCategoryMenu();
 		int categoryOption = -1;
 
-
-		while(categoryOption != 6) {
+		while (categoryOption != 6) {
 			categoryOption = Helper.readInt("Enter a category option > ");
-			
+
 			if (categoryOption == 1) {
 				// View all category
 				CategoryDB.display(CategoryDB.categoryList);
@@ -186,37 +178,33 @@ public class C206_CaseStudy {
 				String catName = Helper.readString("Enter new category name: ");
 				Category c1 = new Category(catName);
 				CategoryDB.categoryList.add(c1);
-				System.out.println(c1+" is add!");
+				System.out.println(c1 + " is add!");
 				CategoryDB.viewAllCategory(CategoryDB.categoryList);
-				
+
 			} else if (categoryOption == 3) {
 				// Delete Category
 				String catName = Helper.readString("Enter category name to delete: ");
 				CategoryDB.delCategory(catName);
-				
+
 			} else if (categoryOption == 4) {
-					// Search Category
-				
+				// Search Category
+
 				String catName = Helper.readString("Enter category name to search: ");
 				CategoryDB.searchCategory(catName);
-					
+
 			} else if (categoryOption == 5) {
-					// Update Category
+				// Update Category
 				String catName = Helper.readString("Enter category name to edit: ");
 				CategoryDB.updateCategory(catName);
-				
+
 			} else if (categoryOption == 6) {
 				// Quit
 				System.out.println("Exit");
 			} else {
 				System.out.println("Invalid type");
 			}
-			
-			
+
 		}
 
-
 	}
->>>>>>> branch 'master' of https://github.com/NixWM/C206_Case_Study_Team2.git
-
 }

@@ -68,7 +68,7 @@ public class ItemTest {
 		
 		//check if list of items is empty
 		String allItems = itemDatabase.retrieveAllItems(itemList);
-		String testOutput = "";
+		String testOutput = "Item List \n ";
 		assertEquals("Check if all items are retrieved", testOutput, allItems);
 		
 		//check if item in the list is deleted properly

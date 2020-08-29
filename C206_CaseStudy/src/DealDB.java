@@ -240,5 +240,53 @@ public class DealDB {
 		System.out.println("3. Seller Email");
 		System.out.println("4. Close Date");
 	}
+	
+	public static void dealMenu(String role) {
+		showDealMenu();
+		int option = Helper.readInt("Enter option: ");
+		String dealID = "";
+		switch (option) {
+		case 1:
+			addDeal(null);
+			break;
+		case 2:
+			viewAllDeal();
+			break;
+		case 3:
+			viewAllDeal();
+			System.out.println();
+			dealID = Helper.readString("Enter Deal ID: ");
+			delDeal(dealID);
+			break;
+		case 4:
+			showSearchMenu();
+			int choice = Helper.readInt("Enter option: ");
+			String src = "";
+			switch (choice) {
+			case 1: 
+				src = Helper.readString("Enter Name: ");
+				break;
+			case 2:
+				src = Helper.readString("Enter Buyer Email: ");
+				break;
+			case 3:
+				src = Helper.readString("Enter Seller Email: ");
+				break;
+			case 4:
+				src = Helper.readString("Enter Close Date (dd/MM/yyyy): ");
+				break;
+			}
+			searchDeal(choice, src);
+			break;
+		case 5: 
+			viewAllDeal();
+			dealID = Helper.readString("Enter Deal ID: ");
+			updateDeal(dealID, role);
+			break;
+			
+		default:
+				System.out.println("Invalid option");
+		}
+	}
 }
 	

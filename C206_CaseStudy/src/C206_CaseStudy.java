@@ -183,6 +183,7 @@ public class C206_CaseStudy {
 				CategoryDB.updateCategory(catName);
 
 			} else if (categoryOption == 6) {
+				//Coded and edited by Qiu Rong on 29/08/2020
 				ArrayList<Item> itemList = new ArrayList<Item>();
 				
 				itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
@@ -193,6 +194,7 @@ public class C206_CaseStudy {
 				CategoryDB.findAllItemsInCat(itemList);
 				
 			} else if (categoryOption == 7) {
+				// Coded by Qiu Rong on 29/08/2020
 					// Quit
 					System.out.println("You have exited Category Menu.");
 			

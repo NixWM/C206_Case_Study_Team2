@@ -1,3 +1,4 @@
+//Coded by Qiu Rong on 24/08/2020
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -111,6 +112,7 @@ public class CategoryTest {
 		assertNotSame("Test that category will be able to search", updateCat, CategoryDB.categoryList);
 	}
 	
+	//Coded by Qiu Rong on 29/08/2020
 	@Test
 	public void findAllItemsInCatTest() {
 		//Test that categoryList is NOT NULL
@@ -122,7 +124,6 @@ public class CategoryTest {
 		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
 		
 		//Test that category will be able to display number of items
-//		CategoryDB.updateCategory(updateCat);
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));

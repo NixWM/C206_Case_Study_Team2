@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int OPTION_QUIT = 6;
+	private static final int OPTION_QUIT = 5;
 	private static final int OPTION2_QUIT = 3;
 
 	public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class C206_CaseStudy {
 								DealDB.dealMenu("Admin");
 							
 							} else if (option1 == 4) {
-								itemDatabase.itemMenu("Admin");
+								//itemDatabase.itemMenu("Admin");
 								
 								
 							} else if (option1 == OPTION_QUIT) {

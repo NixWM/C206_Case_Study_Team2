@@ -146,25 +146,64 @@ public class DealDB {
 		System.out.println(output);
 	}
 	
-	public static void updateDeal(String dealID) {
+	public static void updateDeal(String dealID, String role) {
 		C206_CaseStudy.setHeader("UPDATE DEAL");
 		boolean proceed = false;
+		String buyerEmail = "";
+		String sellerEmail = "";
+		
 		for (Deal i : dealList) {
-			if (i.getDealID().equals(dealID)) 
+			if (i.getDealID().equals(dealID)) {
 				proceed = true;
+				buyerEmail = i.getBuyerEmail();
+				sellerEmail = i.getSellerEmail();
+			}
+
 		}
 		
-		if (proceed) {
-			String itemName = Helper.readString("Enter Item Name: ");
-			String sellerEmail = Helper.readString("Enter seller email: ");
-			String buyerEmail = Helper.readString("Enter buyer Email: ");
-			double price = Helper.readDouble("Enter deal price: ");
-			String closeDate = Helper.readString("Enter closed date: ");
+		switch (role) {
+		case ("admin") :
+			if (proceed) {
+				String itemName = Helper.readString("Enter Item Name: ");
+				sellerEmail = Helper.readString("Enter seller email: ");
+				buyerEmail = Helper.readString("Enter buyer Email: ");
+				double price = Helper.readDouble("Enter deal price: ");
+				String closeDate = Helper.readString("Enter closed date: ");
+				
+				Deal deal = new Deal(dealID, itemName, sellerEmail, buyerEmail, price, closeDate);
+				System.out.println(doUpdateDeal(deal));
+			} else {
+				System.out.println("There no deal id in the list matches the id entered");
+			}
+			break;
 			
-			Deal deal = new Deal(dealID, itemName, sellerEmail, buyerEmail, price, closeDate);
-			System.out.println(doUpdateDeal(deal));
-		} else {
-			System.out.println("There no deal id in the list matches the id entered");
+		case ("buyer"):
+			if (proceed) {
+				String itemName = Helper.readString("Enter Item Name: ");
+				buyerEmail = Helper.readString("Enter buyer Email: ");
+				double price = Helper.readDouble("Enter deal price: ");
+				String closeDate = Helper.readString("Enter closed date: ");
+				
+				Deal deal = new Deal(dealID, itemName, sellerEmail, buyerEmail, price, closeDate);
+				System.out.println(doUpdateDeal(deal));
+			} else {
+				System.out.println("There no deal id in the list matches the id entered");
+			}
+			break;
+		
+		case ("seller"):
+			if (proceed) {
+				String itemName = Helper.readString("Enter Item Name: ");
+				sellerEmail = Helper.readString("Enter seller email: ");
+				double price = Helper.readDouble("Enter deal price: ");
+				String closeDate = Helper.readString("Enter closed date: ");
+				
+				Deal deal = new Deal(dealID, itemName, sellerEmail, buyerEmail, price, closeDate);
+				System.out.println(doUpdateDeal(deal));
+			} else {
+				System.out.println("There no deal id in the list matches the id entered");
+			}
+			break;
 		}
 	}
 	

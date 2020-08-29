@@ -15,7 +15,7 @@ public class CategoryTest {
 	public void setUp() throws Exception {
 		
 		category1 = new Category("Electronic");
-		category2 = new Category("Accessories");
+		category2 = new Category("Handphone");
 
 	}  
 
@@ -46,23 +46,18 @@ public class CategoryTest {
 		//Test if CategoryList is not null
 		assertNotNull("Test if CategoryList is not null", CategoryDB.categoryList);
 		
-		//Test if the list of category retrieved is empty
-		
+		//Test if the list of category retrieved is not empty
 		String allCategory = CategoryDB.viewAllCategory(CategoryDB.categoryList);
+		CategoryDB.categoryList.clear();
 		String testOutput = "\n======Category List======\n";
-		testOutput += "";
+		testOutput += "Electronic\nHandphone\n";
 		assertEquals("Test if the list of category retrieved is empty",testOutput, allCategory);
-		
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
-		CategoryDB.addCategory(category1);
-		CategoryDB.addCategory(category2);
-		assertEquals("Test that Camcorder arraylist size is 2", 2, CategoryDB.categoryList.size());
 				
 		//test if the expected output string same as the list of category retrieved from the categoryDB	
 		allCategory= CategoryDB.viewAllCategory(CategoryDB.categoryList);
 		String testOutput2 = "\n======Category List======\n";
 		testOutput2 += "Electronic\n";
-		testOutput2 += "Accessories\n";
+		testOutput2 += "Handphone\n";
 			
 		assertEquals("Test that viewAllCategoryList", testOutput2, allCategory);
 		
@@ -114,6 +109,29 @@ public class CategoryTest {
 		String updateCat = Helper.readString("Enter category name to search: ");
 		CategoryDB.updateCategory(updateCat);
 		assertNotSame("Test that category will be able to search", updateCat, CategoryDB.categoryList);
+	}
+	
+	@Test
+	public void findAllItemsInCatTest() {
+		//Test that categoryList is NOT NULL
+		assertNotNull("Test that categoryList is NOT null", CategoryDB.categoryList);
+		
+		//Test that categoryList is not empty
+		CategoryDB.addCategory(category1);
+		CategoryDB.addCategory(category2);
+		assertTrue("Test that categoryList is not empty", CategoryDB.categoryList.isEmpty()==false);
+		
+		//Test that category will be able to display number of items
+//		CategoryDB.updateCategory(updateCat);
+		ArrayList<Item> itemList = new ArrayList<Item>();
+		
+		itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
+		itemList.add(new Item("Macbook", "Apple", 1900, "18/09/2020", "30/09/2020", 10, "Electronic"));
+		// Display num of item in each category
+		CategoryDB.findAllItemsInCat(itemList);
+
+		int numOfItems = itemList.size();
+		assertSame("Test that category will be able to display number of items in each category", 2, numOfItems);
 	}
 
 }

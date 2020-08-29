@@ -10,6 +10,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<User> userList = new ArrayList<User>();
+		
 
 		// In Sequences, (Name,Password,Email,Role)
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
@@ -18,7 +19,6 @@ public class C206_CaseStudy {
 
 		int option = 0;
 		int option1 = 0;
-		int categoryOption = 0;
 		int maxLoginTries = 0;
 
 		// coded by Wei Ming
@@ -152,7 +152,7 @@ public class C206_CaseStudy {
 		CategoryDB.showCategoryMenu();
 		int categoryOption = -1;
 
-		while (categoryOption != 6) {
+		while (categoryOption != 7) {
 			categoryOption = Helper.readInt("Enter a category option > ");
 
 			if (categoryOption == 1) {
@@ -183,8 +183,19 @@ public class C206_CaseStudy {
 				CategoryDB.updateCategory(catName);
 
 			} else if (categoryOption == 6) {
-				// Quit
-				System.out.println("Exit");
+				ArrayList<Item> itemList = new ArrayList<Item>();
+				
+				itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
+				itemList.add(new Item("Iphone 11 Pro Max", "Apple", 1600, "20/09/2020", "20/09/2020", 10, "Handphone"));
+				itemList.add(new Item("Smart Television", "Samsung", 1700, "21/09/2020", "21/09/2020", 10, "Electronic"));
+				itemList.add(new Item("Macbook", "Apple", 1900, "18/09/2020", "30/09/2020", 10, "Electronic"));
+				// Display num of item in each category
+				CategoryDB.findAllItemsInCat(itemList);
+				
+			} else if (categoryOption == 7) {
+					// Quit
+					System.out.println("You have exited Category Menu.");
+			
 			} else {
 				System.out.println("Invalid type");
 			}
@@ -235,5 +246,7 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+
 
 }

@@ -6,6 +6,7 @@ public class Item {
 	private String startDate;
 	private String endDate;
 	private double bidIncrement;
+	private String category;
 	
 	public Item(String name, String desc, double minPrice, String startDate, String endDate, double bidIncrement) {
 		this.name = name;
@@ -14,6 +15,24 @@ public class Item {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.bidIncrement = bidIncrement;
+	}
+	
+	public Item(String name, String desc, double minPrice, String startDate, String endDate, double bidIncrement, String category) {
+		this.name = name;
+		this.desc = desc;
+		this.minPrice = minPrice;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.bidIncrement = bidIncrement;
+		this.category = category;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getName() {

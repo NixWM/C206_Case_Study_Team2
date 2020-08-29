@@ -65,7 +65,7 @@ public class C206_CaseStudy {
 					} else if (login.getRole().equalsIgnoreCase("buyer")) {
 						System.out.println("Welcome Member!(Buyer)");
 						while (option1 != OPTION2_QUIT) {
-							UserDB.showBuyerMenu();
+							showBuyerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
@@ -78,7 +78,7 @@ public class C206_CaseStudy {
 					} else if (login.getRole().equalsIgnoreCase("seller")) {
 						System.out.println("Welcome Member!(Seller)");
 						while (option1 != OPTION2_QUIT) {
-							UserDB.showSellerMenu();
+							showSellerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
@@ -254,6 +254,19 @@ public class C206_CaseStudy {
 		}
 
 	}
+
+		public static void showBuyerMenu() {
+			System.out.println("1. Update user");
+			System.out.println("2. *Team, you guys can add more options here");
+			System.out.println("3. Quit");
+		}
+
+
+		public static void showSellerMenu() {
+			System.out.println("1. Update user");
+			System.out.println("2.*Team, you guys can add more options here");
+			System.out.println("3. Quit");
+		}
 	
 
 

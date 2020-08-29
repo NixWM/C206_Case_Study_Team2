@@ -37,7 +37,7 @@ public class DealDB {
 		return output;
 	}
 	
-	public static String viewAllDeal() {
+	public static void viewAllDeal() {
 		C206_CaseStudy.setHeader("VIEW DEAL");
 		String output = "";
 		output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
@@ -51,7 +51,8 @@ public class DealDB {
 			}
 		}
 		
-		return output;
+		System.out.println(output);
+		System.out.println();
 	}
 	
 	public static void delDeal(String dealID) {
@@ -144,6 +145,7 @@ public class DealDB {
 			output += "Invalid Choice";
 		}
 		System.out.println(output);
+		System.out.println();
 	}
 	
 	public static void updateDeal(String dealID, String role) {
@@ -205,6 +207,7 @@ public class DealDB {
 			}
 			break;
 		}
+		System.out.println();
 	} 
 	
 	public static String doUpdateDeal(Deal deal) {

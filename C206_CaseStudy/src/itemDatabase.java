@@ -4,7 +4,7 @@ public class itemDatabase {
 	private static ArrayList<Item> itemList = new ArrayList<Item>();
 	
 	public static void adddItem(Item item) {
-		
+		C206_CaseStudy.setHeader("ADD ITEM");
 		if (item == null) {
 			String name = Helper.readString("Enter Name: ");
 			String desc = Helper.readString("Enter Description: ");
@@ -38,7 +38,7 @@ public class itemDatabase {
 	}
 	
 	public static void viewAllItem() {
-		
+		C206_CaseStudy.setHeader("VIEW ITEM");
 		String output = "";
 		output += String.format("%-20s %-30s %-15s %-22s %-22s %s\n",
 				"Item Name", "Item Description", "Min Bid Price", "Auction Start Date", "Auction End Date", "Bid Increment");
@@ -60,7 +60,8 @@ public class itemDatabase {
 	}
 	
 	public static void delItem() {
-		
+		C206_CaseStudy.setHeader("DELETE ITEM");
+		viewAllItem();
 		String itemName = Helper.readString("Enter Item Name");
 		
 		System.out.println(doDelItem(itemName));
@@ -89,7 +90,7 @@ public class itemDatabase {
 	}
 	
 	public static void searchItem() {
-		
+		C206_CaseStudy.setHeader("SEARCH ITEM");
 		String src = "";
 		System.out.println("1. Search with item name");
 		System.out.println("2. Search with item description");
@@ -144,7 +145,8 @@ public class itemDatabase {
 	}
 	
 	public static void updateItem() {
-		
+		viewAllItem();
+		C206_CaseStudy.setHeader("UPDATE ITEM");
 		String itemName = Helper.readString("Enter Item Name: ");
 		boolean proceed = false;
 		
@@ -161,11 +163,12 @@ public class itemDatabase {
 			double increment = Helper.readDouble("Enter Price Increment: ");
 			
 			Item item = new Item(itemName, desc, minPrice, startDate, endDate, increment);
-			System.out.println();
+			System.out.println(doUpdateItem(item));
 			
 		} else {
 			System.out.println("There no item name in the list matches the name entered");
 		}
+		System.out.println();
 	}
 	
 	public static String doUpdateItem(Item item) {
@@ -189,5 +192,31 @@ public class itemDatabase {
 		System.out.println("3. Delete Item");
 		System.out.println("4. Search Item");
 		System.out.println("5. Update Item");
+		System.out.println();
+	}
+	
+	public static void dealMenu(String role) {
+		showDealMenu();
+		int option = Helper.readInt("Enter option: ");
+		switch (option) {
+		case 1:
+			adddItem(null);
+			break;
+		case 2:
+			viewAllItem();
+			break;
+		case 3:
+			delItem();
+			break;
+		case 4:
+			searchItem();
+			break;
+		case 5: 
+			updateItem();
+			break;
+			
+		default:
+				System.out.println("Invalid option");
+		}
 	}
 }

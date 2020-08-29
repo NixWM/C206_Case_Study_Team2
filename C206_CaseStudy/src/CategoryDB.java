@@ -2,10 +2,9 @@ import java.util.ArrayList;
 
 public class CategoryDB {
 	
+	
+	
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
-	
-	
-	Category cat1 = new Category("E-Books");
 	
 	
 
@@ -17,8 +16,13 @@ public class CategoryDB {
 	
 	public static String viewAllCategory(ArrayList<Category> categoryList) {
 		String output = "";
-		
+		// Coded by Qiu Rong 28/08/2020
+		Category cat1 = new Category("Electronic"); // Creating a new object
+	    categoryList.add(cat1);
+	    categoryList.add(new Category("Handphone"));
+	    
 		output += "\n======Category List======\n";
+		
 
 		for (int i = 0; i < categoryList.size(); i++) {
 			
@@ -67,7 +71,8 @@ public class CategoryDB {
 		System.out.println("3. Delete category");
 		System.out.println("4. Search category");
 		System.out.println("5. Update category");
-		System.out.println("6. Quit");
+		System.out.println("6. Display amount of items in each category");
+		System.out.println("7. Quit");
 		//Added by Qiu Rong on 27/08/2020
 		System.out.println("");
 	}
@@ -91,7 +96,6 @@ public class CategoryDB {
 		}
 	      
 		
-		
 	}
 	
 	public static void updateCategory(String category) {
@@ -109,6 +113,39 @@ public class CategoryDB {
 			System.out.println(catNewName+" updated!");
 		} else {
 			System.out.println("You have entered an invalid category name.");
+		}
+	}
+	
+	
+	public static void findAllItemsInCat(ArrayList<Item> itemList) {
+		ArrayList<String> nameOfCat = new ArrayList<String>();
+		ArrayList<Integer> itemInCat = new ArrayList<Integer>();
+		String catName = null;
+		boolean isFound = false;
+		int indexFound = -1;
+		
+		for(int i=0; i<itemList.size(); i++) {
+			catName = itemList.get(i).getCategory();
+			isFound = false;
+			indexFound = -1;
+			for(int x=0; x<nameOfCat.size(); x++) {
+				if(nameOfCat.get(x).equals(catName)) {
+					isFound = true;
+					indexFound = x;
+				}
+			}
+			if(isFound==false) {
+				nameOfCat.add(catName);
+				itemInCat.add(1);
+				
+			}
+			else {
+				int get = itemInCat.get(indexFound);
+				itemInCat.set(indexFound, get+1);
+			}
+		}
+		for(int i=0; i<nameOfCat.size(); i++) {
+			System.out.println(nameOfCat.get(i)+": There are "+itemInCat.get(i)+" items.");
 		}
 	}
 	

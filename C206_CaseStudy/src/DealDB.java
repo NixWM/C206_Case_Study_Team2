@@ -205,7 +205,7 @@ public class DealDB {
 			}
 			break;
 		}
-	}
+	} 
 	
 	public static String doUpdateDeal(Deal deal) {
 		String output = "";

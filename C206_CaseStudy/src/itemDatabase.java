@@ -62,7 +62,7 @@ public class itemDatabase {
 	public static void delItem() {
 		C206_CaseStudy.setHeader("DELETE ITEM");
 		viewAllItem();
-		String itemName = Helper.readString("Enter Item Name");
+		String itemName = Helper.readString("Enter Item Name: ");
 		
 		System.out.println(doDelItem(itemName));
 		System.out.println();
@@ -182,7 +182,7 @@ public class itemDatabase {
 		return output;
 	}
 	
-	public static void showDealMenu() {
+	public static void showItemMenu() {
 		Helper.line(40, "-");
 		System.out.println("ITEM MENU");
 		Helper.line(40, "-");
@@ -195,8 +195,8 @@ public class itemDatabase {
 		System.out.println();
 	}
 	
-	public static void dealMenu(String role) {
-		showDealMenu();
+	public static void itemMenu(String role) {
+		showItemMenu();
 		int option = Helper.readInt("Enter option: ");
 		switch (option) {
 		case 1:

@@ -3,19 +3,20 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int OPTION_QUIT = 5;
+	private static final int OPTION_QUIT = 6;
 	private static final int OPTION2_QUIT = 3;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		ArrayList<User> userList = new ArrayList<User>();
 		
+		DealDB.addDeal(new Deal("1", "Tablet", "seller1@gmail.com", "buyer1@gmail.com", 136.00, "12/09/2020"));
+		DealDB.addDeal(new Deal("2", "Smartphone", "seller2@gmail.com", "buyer2@gmail.com", 640.00, "31/08/2020"));
+		DealDB.addDeal(new Deal("3", "PC", "seller3@gmail.com", "buyer3@gmail.com", 5742.00, "27/08/2020"));
 
 		// In Sequences, (Name,Password,Email,Role)
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
-		userList.add(new User("seller", "seller", "seller@seller", "seller"));
+		userList.add(new User("seller", "seller", "seller@seller", "Seller"));
 
 		int option = 0;
 		int option1 = 0;
@@ -23,7 +24,7 @@ public class C206_CaseStudy {
 
 		// coded by Wei Ming
 		while (option != OPTION2_QUIT) {
-			C206_CaseStudy.menu();
+			C206_CaseStudy.loginMenu();
 			User login = null; // default is null
 			option = Helper.readInt("Enter an option > ");
 
@@ -50,6 +51,11 @@ public class C206_CaseStudy {
 
 							} else if (option1 == 3) {
 								// Michell code for (Deal menu here)
+								DealDB.dealMenu("Admin");
+							
+							} else if (option1 == 4) {
+								itemDatabase.itemMenu("Admin");
+								
 								
 							} else if (option1 == OPTION_QUIT) {
 								System.out.println("You have been successfully logged out!");
@@ -129,7 +135,7 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void menu() {
+	public static void loginMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 		System.out.println("1. Login");
 		System.out.println("2. Register");

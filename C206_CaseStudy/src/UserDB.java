@@ -73,6 +73,7 @@ public class UserDB {
 		System.out.println("1. Display user menu");
 		System.out.println("2. Display category menu");
 		System.out.println("3. Display deal menu");
+		System.out.println("4. Display item menu");
 		Helper.line(80, "=");
 	}
 

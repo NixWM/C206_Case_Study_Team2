@@ -45,7 +45,7 @@ public class Deal {
 	@Override
 	public String toString() {
 		String output = "";
-		output += String.format("%-10s, %-15s, %-25s, %-25s, $%-15.2f, %s\n", 
+		output += String.format("%-10s %-15s %-25s %-25s $%-15.2f %s\n", 
 				this.dealID, this.itemName, this.sellerEmail, this.buyerEmail, this.dealPrice, this.closeDate);
 		return output;
 	}

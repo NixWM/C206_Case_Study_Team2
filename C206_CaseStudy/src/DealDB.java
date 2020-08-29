@@ -40,7 +40,7 @@ public class DealDB {
 	public static void viewAllDeal() {
 		C206_CaseStudy.setHeader("VIEW DEAL");
 		String output = "";
-		output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
+		output += String.format("%-10s %-15s %-25s %-25s %-15s %s\n",
 				"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
 		
 		if (dealList.isEmpty()) 
@@ -87,7 +87,7 @@ public class DealDB {
 		switch (option) {
 		// item name
 		case 1:
-			output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
+			output += String.format("%-10s %-15s %-25s %-25s %-15s %s\n",
 					"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
 			for (Deal i : dealList) {
 				if (i.getItemName().equals(src)) {
@@ -101,7 +101,7 @@ public class DealDB {
 			break;
 		// buyer email
 		case 2:
-			output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
+			output += String.format("%-10s %-15s %-25s %-25s %-15s %s\n",
 					"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
 			for (Deal i : dealList) {
 				if (i.getBuyerEmail().equals(src)) {
@@ -115,7 +115,7 @@ public class DealDB {
 			break;
 		// seller email
 		case 3:
-			output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
+			output += String.format("%-10s %-15s %-25s %-25s %-15s %s\n",
 					"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
 			for (Deal i : dealList) {
 				if (i.getSellerEmail().equals(src)) {
@@ -129,7 +129,7 @@ public class DealDB {
 			break;
 		// close date
 		case 4:
-			output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
+			output += String.format("%-10s %-15s %-25s %-25s %-15s %s\n",
 					"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
 			for (Deal i : dealList) {
 				if (i.getCloseDate().equals(src)) {
@@ -164,7 +164,7 @@ public class DealDB {
 		}
 		
 		switch (role) {
-		case ("admin") :
+		case ("Admin") :
 			if (proceed) {
 				String itemName = Helper.readString("Enter Item Name: ");
 				sellerEmail = Helper.readString("Enter seller email: ");
@@ -179,7 +179,7 @@ public class DealDB {
 			}
 			break;
 			
-		case ("buyer"):
+		case ("Buyer"):
 			if (proceed) {
 				String itemName = Helper.readString("Enter Item Name: ");
 				buyerEmail = Helper.readString("Enter buyer Email: ");
@@ -193,7 +193,7 @@ public class DealDB {
 			}
 			break;
 		
-		case ("seller"):
+		case ("Seller"):
 			if (proceed) {
 				String itemName = Helper.readString("Enter Item Name: ");
 				sellerEmail = Helper.readString("Enter seller email: ");

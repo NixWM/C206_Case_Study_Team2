@@ -3,6 +3,23 @@ public class DealDB {
 	public static ArrayList<Deal> dealList = new ArrayList<Deal>();
 	
 	public static void addDeal(Deal deal) {
+		C206_CaseStudy.setHeader("ADD DEAL");
+		if (deal == null) {
+			String dealID = Helper.readString("Enter Deal ID: ");
+			String itemName = Helper.readString("Enter Item Name: ");
+			String sellerEmail = Helper.readString("Enter seller email: ");
+			String buyerEmail = Helper.readString("Enter buyer Email: ");
+			double price = Helper.readDouble("Enter deal price: ");
+			String closeDate = Helper.readString("Enter closed date: ");
+			
+			deal = new Deal(dealID, itemName, sellerEmail, buyerEmail, price, closeDate);
+		}
+		
+		System.out.println(doAddDeal(deal));
+		System.out.println();
+	}
+	
+	public static String doAddDeal(Deal deal) {
 		boolean proceed = true;
 		String output = "";
 		
@@ -17,11 +34,11 @@ public class DealDB {
 		} else 
 			output += "The current deal ID is already within the list";
 		
-		System.out.println(output);
-		System.out.println();
+		return output;
 	}
 	
 	public static String viewAllDeal() {
+		C206_CaseStudy.setHeader("VIEW DEAL");
 		String output = "";
 		output += String.format("%-10s, %-15s, %-25s, %-25s, %-15s, %s\n",
 				"Deal ID", "Item Name", "Seller Email", "Buyer Email", "Deal Price", "Close Date");
@@ -38,6 +55,7 @@ public class DealDB {
 	}
 	
 	public static void delDeal(String dealID) {
+		C206_CaseStudy.setHeader("DELETE DEAL");
 		boolean proceed = false;
 		String output = "";
 		int i = 0;
@@ -60,6 +78,8 @@ public class DealDB {
 	}
 	
 	public static void searchDeal(int option, String src) {
+		C206_CaseStudy.setHeader("SEARCH DEAL");
+		showSearchMenu();
 		String output = "";
 		String OUTPUT = "";
 		
@@ -127,6 +147,7 @@ public class DealDB {
 	}
 	
 	public static void updateDeal(String dealID) {
+		C206_CaseStudy.setHeader("UPDATE DEAL");
 		boolean proceed = false;
 		for (Deal i : dealList) {
 			if (i.getDealID().equals(dealID)) 
@@ -168,6 +189,17 @@ public class DealDB {
 		System.out.println("3. Delete Deal");
 		System.out.println("4. Search Deal");
 		System.out.println("5. Update Deal");
+	}
+	
+	private static void showSearchMenu() {
+		Helper.line(40, "-");
+		System.out.println("SEARCH DEAL MENU");
+		Helper.line(40, "-");
+		
+		System.out.println("1. Item Name");
+		System.out.println("2. Buyer Email");
+		System.out.println("3. Seller Email");
+		System.out.println("4. Close Date");
 	}
 }
 	

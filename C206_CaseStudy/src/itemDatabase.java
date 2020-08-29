@@ -15,11 +15,11 @@ public class itemDatabase {
 			
 			item = new Item(name, desc, minPrice, startDate, endDate, increment);
 		} 		
-		System.out.println(doAddItem(item, itemList));
+		System.out.println(doAddItem(item));
 		System.out.println();
 	}
 	
-	public static String doAddItem(Item item, ArrayList<Item> itemList) {
+	public static String doAddItem(Item item) {
 		boolean proceed = true;
 		String output = "";
 		
@@ -63,11 +63,11 @@ public class itemDatabase {
 		
 		String itemName = Helper.readString("Enter Item Name");
 		
-		System.out.println(doDelItem(itemList, itemName));
+		System.out.println(doDelItem(itemName));
 		System.out.println();
 	}
 	
-	public static String doDelItem(ArrayList<Item> itemList, String itemName) {
+	public static String doDelItem(String itemName) {
 		boolean proceed = false;
 		String output = "";
 		int i = 0;
@@ -100,11 +100,11 @@ public class itemDatabase {
 			src = Helper.readString("Enter item description (keyword): ");
 		}
 		
-		System.out.println(doSearchItem(itemList, choice, src));
+		System.out.println(doSearchItem(choice, src));
 		System.out.println();
 	}
 	
-	public static String doSearchItem(ArrayList<Item> itemList, int choice, String src) {
+	public static String doSearchItem(int choice, String src) {
 		String output = "";
 		String OUTPUT = "";
 		
@@ -168,7 +168,7 @@ public class itemDatabase {
 		}
 	}
 	
-	public static String doUpdateItem(ArrayList<Item> itemList, Item item) {
+	public static String doUpdateItem(Item item) {
 		String output = "";
 		for (int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i).getName().equals(item.getName())) {

@@ -47,8 +47,8 @@ public class CategoryTest {
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		CategoryDB.addCategory(categoryList, category2);
-		assertEquals("Check that Camcorder arraylist size is 2", 2, categoryList.size());
-		assertSame("Check that Camcorder is added", category2, categoryList.get(1));
+		assertEquals("Check that Category arraylist size is 2", 2, categoryList.size());
+		assertSame("Check that Category is added", category2, categoryList.get(1));
 	}
 	
 	@Test 
@@ -60,19 +60,19 @@ public class CategoryTest {
 		//test if the list of category retrieved from the CategoryDB is empty - boundary
 		String allCategory= CategoryDB.viewAllCategory(categoryList);
 		String testOutput = "\n======Category List======\n";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
+		assertEquals("Check that ViewAllCategory", testOutput, allCategory);
 		
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		CategoryDB.addCategory(categoryList, category1);
 		CategoryDB.addCategory(categoryList, category2);
-		assertEquals("Test that Camcorder arraylist size is 2", 2, categoryList.size());
+		assertEquals("Test that Category arraylist size is 2", 2, categoryList.size());
 		
 		//test if the expected output string same as the list of category retrieved from the categoryDB	
 		allCategory= CategoryDB.viewAllCategory(categoryList);
 		testOutput = "\n======Category List======\n";
 		testOutput += "Electronic\nHandphone\n";
 	
-		assertEquals("Test that ViewAllCamcorderlist", testOutput, allCategory);
+		assertEquals("Test that ViewAllCategory is retrieved from categoryDB", testOutput, allCategory);
 		
 		
 	}

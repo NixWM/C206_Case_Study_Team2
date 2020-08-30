@@ -73,8 +73,9 @@ public class ItemTest {
 		
 		//check if item in the list is deleted properly
 		String itemName = itemDatabase.itemList.toString();
+		String item = itemDatabase.doDelItem(itemList, itemName);
 		
-		itemDatabase.doDelItem(itemDatabase.itemList, itemName);
+		itemDatabase.doDelItem(itemList, item);
 		assertEquals("Test that the size of the itemList is 0 after deleting the item", 0, itemDatabase.itemList.size());
 	}
 }

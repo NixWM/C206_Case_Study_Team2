@@ -62,7 +62,7 @@ public class itemDatabase {
 	
 	public static void delItem() {
 		
-		String itemName = Helper.readString("Enter item name");
+		String itemName = Helper.readString("Enter Item Name");
 		
 		System.out.println(doDelItem(itemList, itemName));
 		System.out.println();

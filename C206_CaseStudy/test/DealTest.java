@@ -43,11 +43,11 @@ public class DealTest {
 		 //Test that the dealList is not NULL
 		assertNotNull("Test that the dealList is NOT null so that the deals can be retrieved from the database", DealDB.dealList);
 			
-		//test if the list of Deals retrieved is empty (Boundary)
+		//test if the list of Deals retrieved is empty
 
 		assertEquals("Test that the size of userList is 0 before viewing any deals", 0, DealDB.dealList.size());				
 				
-		//Given an empty list, after adding 3 deals, test if the size of the dealList is 3 (Normal)
+		//Given an empty list, after adding 3 deals, test if the size of the dealList is 3
 		DealDB.addDeal(deal1);
 		DealDB.addDeal(deal2);
 		DealDB.addDeal(deal3);
@@ -67,6 +67,6 @@ public class DealTest {
 		//Test if the list has one deal left after removing two deals from the dealList.
 		DealDB.delDeal(deal1);
 		DealDB.delDeal(deal2);
-		assertEquals("Test that the size of the dealList is 1 after deleting the item", 1, DealDB.dealList.size());
+		assertEquals("Test that the size of the dealList is 1 after deleting the deals", 1, DealDB.dealList.size());
 	}
 }

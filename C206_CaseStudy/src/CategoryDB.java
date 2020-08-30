@@ -6,7 +6,7 @@ public class CategoryDB {
 	
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
 	
-	
+
 
 	public static void addCategory(Category category) {
 
@@ -15,11 +15,12 @@ public class CategoryDB {
 	}
 	
 	public static String viewAllCategory(ArrayList<Category> categoryList) {
-		String output = "";
+		
 		// Coded by Qiu Rong 28/08/2020
 		Category cat1 = new Category("Electronic"); // Creating a new object
 	    categoryList.add(cat1);
 	    categoryList.add(new Category("Handphone"));
+	    String output = "";
 	    
 		output += "\n======Category List======\n";
 		
@@ -37,6 +38,9 @@ public class CategoryDB {
 			
 			String output = viewAllCategory(categoryList);
 			System.out.println(output);
+		} else {
+			//Coded by Qiu Rong on 29/08/2020
+			System.out.println("Nothing to display");
 		}
 	}
 	
@@ -116,7 +120,7 @@ public class CategoryDB {
 		}
 	}
 	
-	
+	//Coded by Qiu Rong on 29/08/2020
 	public static void findAllItemsInCat(ArrayList<Item> itemList) {
 		ArrayList<String> nameOfCat = new ArrayList<String>();
 		ArrayList<Integer> itemInCat = new ArrayList<Integer>();

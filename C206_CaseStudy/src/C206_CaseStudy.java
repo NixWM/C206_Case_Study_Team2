@@ -170,7 +170,6 @@ public class C206_CaseStudy {
 				Category c1 = new Category(catName);
 				CategoryDB.categoryList.add(c1);
 				System.out.println(c1 + " is add!");
-				CategoryDB.viewAllCategory(CategoryDB.categoryList);
 
 			} else if (categoryOption == 3) {
 				// Delete Category

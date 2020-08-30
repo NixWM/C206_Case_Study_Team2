@@ -15,10 +15,11 @@ public class C206_CaseStudy {
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
 		userList.add(new User("seller", "seller", "seller@seller", "seller"));
-		
-		itemDatabase.addItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
+
+		itemDatabase.addItem(
+				new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
 		itemDatabase.addItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
-		
+
 		int option = 0;
 		int option1 = 0;
 		int categoryOption = 0;
@@ -75,7 +76,7 @@ public class C206_CaseStudy {
 					} else if (login.getRole().equalsIgnoreCase("buyer")) {
 						System.out.println("Welcome Member!(Buyer)");
 						while (option1 != OPTION2_QUIT) {
-							UserDB.showBuyerMenu();
+							showBuyerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
@@ -88,7 +89,7 @@ public class C206_CaseStudy {
 					} else if (login.getRole().equalsIgnoreCase("seller")) {
 						System.out.println("Welcome Member!(Seller)");
 						while (option1 != OPTION2_QUIT) {
-							UserDB.showSellerMenu();
+							showSellerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
@@ -205,6 +206,19 @@ public class C206_CaseStudy {
 			}
 
 		}
-
 	}
+
+	public static void showBuyerMenu() {
+		System.out.println("1. Update user");
+		System.out.println("2. Search by item");
+		System.out.println("3. Quit");
+	}
+
+	
+	public static void showSellerMenu() {
+		System.out.println("1. Update user");
+		System.out.println("2.Cancel buyer auction bid");
+		System.out.println("3. Quit");
+	}
+
 }

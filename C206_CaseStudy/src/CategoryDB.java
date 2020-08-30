@@ -6,65 +6,105 @@ public class CategoryDB {
 	
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
 	
-<<<<<<< HEAD
-	Category cat1 = new Category("E-Books");
+	public static Category inputCategory() {
+		String catName = Helper.readString("Enter new category name: ");
+		Category category = new Category(catName);
+		return category;
+		
+	}
 	
-=======
 
->>>>>>> branch 'master' of https://github.com/NixWM/C206_Case_Study_Team2.git
 
-	public static void addCategory(Category category) {
+	public static void addCategory(ArrayList<Category> categoryList, Category category) {
 
 		categoryList.add(category);
+		System.out.println("New Category is added!");
 		
 	}
 	
 	public static String viewAllCategory(ArrayList<Category> categoryList) {
 		
-		// Coded by Qiu Rong 28/08/2020
-		Category cat1 = new Category("Electronic"); // Creating a new object
-	    categoryList.add(cat1);
-	    categoryList.add(new Category("Handphone"));
-	    String output = "";
-	    
+		//New edit 30/08/2020 to solve my error
+		String output = "";
 		output += "\n======Category List======\n";
-		
-
 		for (int i = 0; i < categoryList.size(); i++) {
 			
 			output += categoryList.get(i).getName()+"\n";
 		}
-		
 		return output;
+		
+		
+		// Coded by Qiu Rong 28/08/2020
+//		Category cat1 = new Category("Electronic"); // Creating a new object
+//	    categoryList.add(cat1);
+//	    categoryList.add(new Category("Handphone"));
+//	    String output = "";
+//	    
+//		output += "\n======Category List======\n";
+//		
+//
+//		for (int i = 0; i < categoryList.size(); i++) {
+//			
+//			output += categoryList.get(i).getName()+"\n";
+//		}
+//		
+//		return output;
 	}
 	
 	public static void display(ArrayList<Category> categoryList) {
-		if(categoryList != null) {
-			
-			String output = viewAllCategory(categoryList);
-			System.out.println(output);
-		} else {
-			//Coded by Qiu Rong on 29/08/2020
-			System.out.println("Nothing to display");
-		}
+		String output = "";
+		output += viewAllCategory(categoryList);
+		System.out.println(output);
+		
+//		if(categoryList != null) {
+//			
+//			String output = viewAllCategory(categoryList);
+//			System.out.println(output);
+//		} else {
+//			//Coded by Qiu Rong on 29/08/2020
+//			System.out.println("Nothing to display");
+//		}
 	}
 	
-	public static void delCategory(String category) {
-		Category cat = null;
-		boolean found = false;
-		for (int i = 0; i < categoryList.size(); i++){
-	          if (categoryList.get(i).getName().equalsIgnoreCase(category)){
-	        	  found = true;
-	        	  cat= categoryList.get(i);
-	          } 
-	          
-	       }
-		if (found == true) {
-			categoryList.remove(cat);
-			System.out.println("You have successfully deleted " + cat);
-		} else {
-			System.out.println("You have entered an invalid category name.");
+	public static String inputSearchCategory() {
+		String catName = Helper.readString("Enter category name to search: ");
+
+		return catName;
+		
+	}
+	
+	public static String doDelCategory(String catName) {
+		
+		boolean isFound = false;
+		String output = "";
+//		Category cat = null;
+		int i =0;
+
+		for (; i < categoryList.size(); i++) {
+			
+			String categoryName = categoryList.get(i).getName();
+			
+			if (catName.equalsIgnoreCase(categoryName)) {
+				
+				isFound = true;
+				
+//				cat= categoryList.get(i);
+				
+			}
 		}
+		if (isFound==true) {
+			categoryList.remove(categoryList.get(i));
+			output += "You have successfully deleted " + catName;
+		} else {
+			output += "You have entered an invalid category name.";
+		}
+		return output;
+	}
+	
+	public static void delCategory() {
+//		CategoryDB.display(categoryList);
+		String catName = Helper.readString("Enter category name to delete: ");
+		System.out.println(doDelCategory(catName));
 		
 		
 	}

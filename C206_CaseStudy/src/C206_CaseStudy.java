@@ -180,13 +180,13 @@ public class C206_CaseStudy {
 //				Category c1 = new Category(catName);
 //				CategoryDB.categoryList.add(c1);
 //				System.out.println(c1 + " is add!");
-				//Category category = CategoryDB.inputCategory();
-				//CategoryDB.addCategory(listOfCategory, category);
+				Category category = CategoryDB.inputCategory();
+				CategoryDB.addCategory(listOfCategory, category);
 				
 			} else if (categoryOption == 3) {
 				// Delete Category
 
-				//CategoryDB.delCategory();
+				CategoryDB.delCategory();
 
 			} else if (categoryOption == 4) {
 				// Search Category

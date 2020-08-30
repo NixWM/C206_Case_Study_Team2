@@ -16,8 +16,8 @@ public class C206_CaseStudy {
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
 		userList.add(new User("seller", "seller", "seller@seller", "seller"));
 		
-		itemDatabase.adddItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
-		itemDatabase.adddItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
+		itemDatabase.addItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
+		itemDatabase.addItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
 		
 		int option = 0;
 		int option1 = 0;

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 public class itemDatabase {
 	
-	private static ArrayList<Item> itemList = new ArrayList<Item>();
+	static ArrayList<Item> itemList = new ArrayList<Item>();
 	
-	public static void adddItem(Item item) {
+	public static void addItem(Item item) {
 		
 		if (item == null) {
 			String name = Helper.readString("Enter Name: ");
@@ -61,7 +61,7 @@ public class itemDatabase {
 	
 	public static void delItem() {
 		
-		String itemName = Helper.readString("Enter Item Name");
+		String itemName = Helper.readString("Enter item name");
 		
 		System.out.println(doDelItem(itemList, itemName));
 		System.out.println();

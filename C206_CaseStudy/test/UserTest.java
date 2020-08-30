@@ -50,10 +50,10 @@ public class UserTest {
 		assertEquals("Test if size of userList is 0 before viewing the users", 0, userList.size());
 
 		//Test if the list of user retrieved is empty
-		UserDB.userList.add(user);
-		UserDB.userList.add(user2);
-		assertEquals("Test that user arraylist size is 2", 2, UserDB.userList.size());
-		String allUser = UserDB.viewAllUser(UserDB.userList);
+		userList.add(user);
+		userList.add(user2);
+		assertEquals("Test that user arraylist size is 2", 2, userList.size());
+		String allUser = UserDB.viewAllUser(userList);
 		String testOutput = "";
 		assertEquals("Test if the list of user retrieved is 2",testOutput, allUser);
 
@@ -78,18 +78,14 @@ public class UserTest {
 	public void searchUserTest() {
 		// Test if the user list is not null
 		assertNotNull(userList);
-		// Given an empty list, after adding 2 users, test if the users is inside the
+		// Given an empty list, after adding a user, test if the user is inside the
 		// list.
 		userList.add(user);
-		userList.add(user2);
-		for (int i = 0; i < userList.size(); i++) {
-			System.out.println(String.format("%-1s %-1s %-1s %-1s", userList.get(i).getName(),
-					userList.get(i).getPassword(), userList.get(i).getEmail(), userList.get(i).getRole()));
-		}
-		assertEquals("Test that user arraylist size is 2", 2, userList.size());
+		assertEquals("Test that user arraylist size is 1", 1, userList.size());
 		// Test if user search by email
 		String search = Helper.readString("Search user based on email > ");
 		UserDB.searchUser(search, userList);
+		
 	}
 
 	@Test
@@ -100,6 +96,11 @@ public class UserTest {
 		// accordingly to the user input.
 		userList.add(user);
 		UserDB.updateUser(userList);
+		assertSame("Test the first element in userList is the same as what was added.", user, userList.get(0));
+		
+		//view all user
+		UserDB.viewAllUser(userList);
+		
 	}
 
 }

@@ -23,15 +23,16 @@ public class itemDatabase {
 		boolean proceed = true;
 		String output = "";
 		
-		for (Item i : itemList) {
+		for (Item i : itemList) 
+		{
 			if (i.getName().equals(item.getName()))
 				proceed = false;
 		}
-		
 		if (proceed) {
 			itemList.add(item);
 			output += "Item has been added";
-		} else 
+		} 
+		else 
 			output += "The current Item Name is already within the list";
 		
 		return output;

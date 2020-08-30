@@ -1,33 +1,36 @@
+
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int OPTION_QUIT = 6;
-	private static final int OPTION1_QUIT = 2;
+	private static final int OPTION_QUIT = 5;
 	private static final int OPTION2_QUIT = 3;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		ArrayList<User> userList = new ArrayList<User>();
+		
+		//michell
+		DealDB.addDeal(new Deal("1", "Tablet", "seller1@gmail.com", "buyer1@gmail.com", 136.00, "12/09/2020"));
+		DealDB.addDeal(new Deal("2", "Smartphone", "seller2@gmail.com", "buyer2@gmail.com", 640.00, "31/08/2020"));
+		DealDB.addDeal(new Deal("3", "PC", "seller3@gmail.com", "buyer3@gmail.com", 5742.00, "27/08/2020"));
 
-		// In Sequences, (Name,Password,Email,Role)
+		// In Sequences, (Name,Password,Email,Role) (weiming)
 		userList.add(new User("admin", "admin", "ad@admin", "Admin"));
 		userList.add(new User("buyer", "buyer", "buyer@buyer", "Buyer"));
-		userList.add(new User("seller", "seller", "seller@seller", "seller"));
-
-		itemDatabase.addItem(
-				new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
+		userList.add(new User("seller", "seller", "seller@seller", "Seller"));
+		
+		// hidayah
+		itemDatabase.addItem(new Item("Chocolate", "Valentine's Day Chocolate", 1.50, "20 January 2020", "14 February 2020", 0.50));
 		itemDatabase.addItem(new Item("Laptop", "Lenovo", 500, "15 February 2020", "19 December 2020", 100));
+
 
 		int option = 0;
 		int option1 = 0;
-		int categoryOption = 0;
 		int maxLoginTries = 0;
 
 		// coded by Wei Ming
 		while (option != OPTION2_QUIT) {
-			C206_CaseStudy.menu();
+			C206_CaseStudy.loginMenu();
 			User login = null; // default is null
 			option = Helper.readInt("Enter an option > ");
 
@@ -45,29 +48,22 @@ public class C206_CaseStudy {
 
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
-								// Add user
-								String name = Helper.readString("Enter user name > ");
-								String password = Helper.readString("Enter user password > ");
-								String email = Helper.readString("Enter user email > ");
-								String role = Helper.readString("Enter user role > ");
-								User NewUser = new User(name, password, email, role);
-								UserDB.addUser(userList, NewUser);
-							} else if (option1 == 2) {
-								// View all user
-								UserDB.viewAllUser(userList);
-							} else if (option1 == 3) {
-								// Delete user based on EMAIL
-								String delete = Helper.readString("Enter your email to delete the user > ");
-								UserDB.delUser(delete, userList);
-							} else if (option1 == 4) {
-								// Search user account based on email
-								String sEmail = Helper.readString("Enter user email to search > ");
-								UserDB.searchUser(sEmail, userList);
+								//display user menu
+								userMenu(userList);
 
-							} else if (option1 == 5) {
+							} else if (option1 == 2) {
 								// Added by Qiu Rong at 26/08/2020
 								categoryMenu();
 
+							} else if (option1 == 3) {
+								// Michell code for (Deal menu here)
+								DealDB.dealMenu("Admin");
+							
+							} else if (option1 == 4) {
+								itemDatabase.showDealMenu();
+								
+								
+								
 							} else if (option1 == OPTION_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
@@ -81,7 +77,7 @@ public class C206_CaseStudy {
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
 
-							} else if (option1 == OPTION1_QUIT) {
+							} else if (option1 == OPTION2_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
 						}
@@ -133,7 +129,8 @@ public class C206_CaseStudy {
 	}
 
 // Coded by Wei Ming
-	public static User loginUser(ArrayList<User> userList) { // check login user based on email and password.
+	// check login user based on email and password.
+	public static User loginUser(ArrayList<User> userList) { 
 		String email = Helper.readString("Enter your email > ");
 		String password = Helper.readString("Enter your password >");
 		for (int i = 0; i < userList.size(); i++) {
@@ -145,7 +142,7 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void menu() {
+	public static void loginMenu() {
 		C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 		System.out.println("1. Login");
 		System.out.println("2. Register");
@@ -165,27 +162,31 @@ public class C206_CaseStudy {
 	// Edited code again by Qiu Rong at 27/08/2020
 	private static void categoryMenu() {
 
-		CategoryDB.showCategoryMenu();
-		int categoryOption = -1;
+		ArrayList<Category> listOfCategory = new ArrayList<Category>();
+		listOfCategory.add(new Category("Electronic"));
+		listOfCategory.add(new Category("Handphone"));
+		int categoryOption = 0;
 
-		while (categoryOption != 6) {
+		while (categoryOption != 7) {
+			CategoryDB.showCategoryMenu();
 			categoryOption = Helper.readInt("Enter a category option > ");
 
 			if (categoryOption == 1) {
 				// View all category
-				CategoryDB.display(CategoryDB.categoryList);
+				CategoryDB.display(listOfCategory);
 			} else if (categoryOption == 2) {
 				// Add category
-				String catName = Helper.readString("Enter new category name: ");
-				Category c1 = new Category(catName);
-				CategoryDB.categoryList.add(c1);
-				System.out.println(c1 + " is add!");
-				CategoryDB.viewAllCategory(CategoryDB.categoryList);
-
+//				String catName = Helper.readString("Enter new category name: ");
+//				Category c1 = new Category(catName);
+//				CategoryDB.categoryList.add(c1);
+//				System.out.println(c1 + " is add!");
+				//Category category = CategoryDB.inputCategory();
+				//CategoryDB.addCategory(listOfCategory, category);
+				
 			} else if (categoryOption == 3) {
 				// Delete Category
-				String catName = Helper.readString("Enter category name to delete: ");
-				CategoryDB.delCategory(catName);
+
+				//CategoryDB.delCategory();
 
 			} else if (categoryOption == 4) {
 				// Search Category
@@ -199,26 +200,85 @@ public class C206_CaseStudy {
 				CategoryDB.updateCategory(catName);
 
 			} else if (categoryOption == 6) {
-				// Quit
-				System.out.println("Exit");
+				//Coded and edited by Qiu Rong on 29/08/2020
+				ArrayList<Item> itemList = new ArrayList<Item>();
+				
+				itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
+				itemList.add(new Item("Iphone 11 Pro Max", "Apple", 1600, "20/09/2020", "20/09/2020", 10, "Handphone"));
+				itemList.add(new Item("Smart Television", "Samsung", 1700, "21/09/2020", "21/09/2020", 10, "Electronic"));
+				itemList.add(new Item("Macbook", "Apple", 1900, "18/09/2020", "30/09/2020", 10, "Electronic"));
+				// Display num of item in each category
+				CategoryDB.findAllItemsInCat(itemList);
+				
+			} else if (categoryOption == 7) {
+				// Coded by Qiu Rong on 29/08/2020
+					// Quit
+					System.out.println("You have exited Category Menu.");
+			
 			} else {
 				System.out.println("Invalid type");
 			}
 
 		}
+
 	}
 
-	public static void showBuyerMenu() {
-		System.out.println("1. Update user");
-		System.out.println("2. Search by item");
-		System.out.println("3. Quit");
+	// Method userMenu added
+	public static void userMenu(ArrayList<User> userList) {
+		int userOption = 0;
+		while (userOption != OPTION_QUIT) {
+			UserDB.showUserMenu();
+			userOption = Helper.readInt("Enter a user option > ");
+
+			if (userOption == 1) {
+				// Add User
+				String name = Helper.readString("Enter user name > ");
+				String password = Helper.readString("Enter user password > ");
+				String email = Helper.readString("Enter user email > ");
+				String role = Helper.readString("Enter user role (Buyer/Seller) > ");
+				if ((role.equalsIgnoreCase("Buyer")) && (!role.equalsIgnoreCase("Admin"))) {
+					User NewUser = new User(name, password, email, role);
+					UserDB.addUser(userList, NewUser);
+				} else if ((role.equalsIgnoreCase("Seller")) && (!role.equalsIgnoreCase("Admin"))) {
+					User NewUser = new User(name, password, email, role);
+					UserDB.addUser(userList, NewUser);
+				} else {
+					System.out.println("Sorry, invalid role detected");
+				}
+			} else if (userOption == 2) {
+				// View all user
+				UserDB.viewAllUser(userList);
+			} else if (userOption == 3) {
+				// Delete user based on EMAIL
+				String delete = Helper.readString("Enter your email to delete the user > ");
+				UserDB.delUser(delete, userList);
+
+			} else if (userOption == 4) {
+				// Search user account based on email
+				String sEmail = Helper.readString("Enter user email to search > ");
+				UserDB.searchUser(sEmail, userList);
+
+			} else if (userOption == OPTION_QUIT) {
+				// back to main menu
+				System.out.println("== Back to main menu ==");
+			}
+		}
+
 	}
 
+		public static void showBuyerMenu() {
+			System.out.println("1. Update user");
+			System.out.println("2. *Team, you guys can add more options here");
+			System.out.println("3. Quit");
+		}
+
+
+		public static void showSellerMenu() {
+			System.out.println("1. Update user");
+			System.out.println("2.*Team, you guys can add more options here");
+			System.out.println("3. Quit");
+		}
 	
-	public static void showSellerMenu() {
-		System.out.println("1. Update user");
-		System.out.println("2.Cancel buyer auction bid");
-		System.out.println("3. Quit");
-	}
+
 
 }

@@ -60,7 +60,7 @@ public class C206_CaseStudy {
 								DealDB.dealMenu("Admin");
 							
 							} else if (option1 == 4) {
-								itemDatabase.showDealMenu();
+								itemDatabase.itemMenu();
 								
 								
 								

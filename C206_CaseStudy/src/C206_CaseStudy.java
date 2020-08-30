@@ -70,26 +70,30 @@ public class C206_CaseStudy {
 						}
 						// If role = Buyer, login as Buyer user.
 					} else if (login.getRole().equalsIgnoreCase("buyer")) {
+						C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 						System.out.println("Welcome Member!(Buyer)");
 						while (option1 != OPTION2_QUIT) {
 							showBuyerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
-
+							} else if (option1 ==2) {
+								DealDB.dealMenu("Buyer");
 							} else if (option1 == OPTION2_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
 						}
 						// if role = Seller, login as Seller user.
 					} else if (login.getRole().equalsIgnoreCase("seller")) {
+						C206_CaseStudy.setHeader("CAMPUS ONLINE AUCTION SHOP");
 						System.out.println("Welcome Member!(Seller)");
 						while (option1 != OPTION2_QUIT) {
 							showSellerMenu();
 							option1 = Helper.readInt("Enter an option > ");
 							if (option1 == 1) {
 								UserDB.updateUser(userList);
-
+							} else if (option1 ==2) {
+								DealDB.dealMenu("Seller");
 							} else if (option1 == OPTION2_QUIT) {
 								System.out.println("You have been successfully logged out!");
 							}
@@ -205,14 +209,14 @@ public class C206_CaseStudy {
 
 		public static void showBuyerMenu() {
 			System.out.println("1. Update user");
-			System.out.println("2. *Team, you guys can add more options here");
+			System.out.println("2. Deal");
 			System.out.println("3. Quit");
 		}
 
 
 		public static void showSellerMenu() {
 			System.out.println("1. Update user");
-			System.out.println("2.*Team, you guys can add more options here");
+			System.out.println("2. Deal");
 			System.out.println("3. Quit");
 		}
 	

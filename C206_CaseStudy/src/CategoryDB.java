@@ -65,7 +65,7 @@ public class CategoryDB {
 		
 		if (proceed) {
 			categoryList.remove(i);
-			output += "Category has been removed";
+			output += "Category " + categoryName +" has been removed";
 		} else 
 			output += "The category name is invalid";
 		

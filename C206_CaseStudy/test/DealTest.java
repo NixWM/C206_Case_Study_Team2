@@ -28,23 +28,45 @@ public class DealTest {
 	public void addDealTest() {
 		assertNotNull("Test dealList is not null", DealDB.dealList);
 		
-		//Test that size of itemList is 0 before adding any items
-		assertEquals("Test deallist is 0 before adding any deals", 0, DealDB.dealList.size());
+		//Test that size of dealList is 0 before adding any deals
+		assertEquals("Test dealList is 0 before adding any deals", 0, DealDB.dealList.size());
 		
-		//Test that the size of the itemList is 1 after adding item
+		//Test that the size of the dealList is 1 after adding a deal
 		DealDB.addDeal(deal1);
 		assertEquals("Test size has 1", 1, DealDB.dealList.size());
 		
-		//Test that the first item in list is the same as what was added
+		//Test that the first deal in list is the same as what was added
 		assertSame("Test that the first item in list is the same as what was added", deal1, DealDB.dealList.get(0));	
 	}
-	
+
 	public void viewDealTest() {
-		 //Test that dealList is not null
-		assertNotNull("Test that dealList is NOT null so deals can be retrieved", DealDB.dealList);
+		 //Test that the dealList is not NULL
+		assertNotNull("Test that the dealList is NOT null so that the deals can be retrieved from the database", DealDB.dealList);
 			
-		//test if the list of Deals retrieved is empty
-		String allDeals= DealDB.viewAllDeal();
-		assertEquals("Test that the size of userList is 0 before viewing any Deals", 0, DealDB.dealList.size());
+		//test if the list of Deals retrieved is empty (Boundary)
+
+		assertEquals("Test that the size of userList is 0 before viewing any deals", 0, DealDB.dealList.size());				
+				
+		//Given an empty list, after adding 3 deals, test if the size of the dealList is 3 (Normal)
+		DealDB.addDeal(deal1);
+		DealDB.addDeal(deal2);
+		DealDB.addDeal(deal3);
+		assertEquals("Test that the size of dealList is 3 ", 3, DealDB.dealList.size());
+		
+	}
+
+	public void delDealTest() {
+		assertNotNull("Test that itemList is Not null", DealDB.dealList);
+		
+		//Test if deals is inside the dealList before deleting properly
+		DealDB.addDeal(deal1);
+		DealDB.addDeal(deal2);
+		DealDB.addDeal(deal3);
+		assertEquals("Test that the size of dealList is 3 ", 3, DealDB.dealList.size());
+		
+		//Test if the list has one deal left after removing two deals from the dealList.
+		DealDB.delDeal(deal1);
+		DealDB.delDeal(deal2);
+		assertEquals("Test that the size of the dealList is 1 after deleting the item", 1, DealDB.dealList.size());
 	}
 }

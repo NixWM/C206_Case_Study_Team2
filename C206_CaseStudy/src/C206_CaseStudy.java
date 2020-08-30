@@ -53,7 +53,7 @@ public class C206_CaseStudy {
 
 							} else if (option1 == 2) {
 								// Added by Qiu Rong at 26/08/2020
-								categoryMenu();
+								CategoryDB.categoryMenu();
 
 							} else if (option1 == 3) {
 								// Michell code for (Deal menu here)
@@ -157,71 +157,8 @@ public class C206_CaseStudy {
 		Helper.line(80, "=");
 	}
 
-	// Coded by Qiu Rong at 25/08/2020
-	// Edited code by Qiu Rong at 26/08/2020
-	// Edited code again by Qiu Rong at 27/08/2020
-	private static void categoryMenu() {
 
-		ArrayList<Category> listOfCategory = new ArrayList<Category>();
-		listOfCategory.add(new Category("Electronic"));
-		listOfCategory.add(new Category("Handphone"));
-		int categoryOption = 0;
-
-		while (categoryOption != 7) {
-			CategoryDB.showCategoryMenu();
-			categoryOption = Helper.readInt("Enter a category option > ");
-
-			if (categoryOption == 1) {
-				// View all category
-				CategoryDB.display(listOfCategory);
-			} else if (categoryOption == 2) {
-				// Add category
-//				String catName = Helper.readString("Enter new category name: ");
-//				Category c1 = new Category(catName);
-//				CategoryDB.categoryList.add(c1);
-//				System.out.println(c1 + " is add!");
-				Category category = CategoryDB.inputCategory();
-				CategoryDB.addCategory(listOfCategory, category);
-				
-			} else if (categoryOption == 3) {
-				// Delete Category
-
-				CategoryDB.delCategory();
-
-			} else if (categoryOption == 4) {
-				// Search Category
-
-				String catName = Helper.readString("Enter category name to search: ");
-				CategoryDB.searchCategory(catName);
-
-			} else if (categoryOption == 5) {
-				// Update Category
-				String catName = Helper.readString("Enter category name to edit: ");
-				CategoryDB.updateCategory(catName);
-
-			} else if (categoryOption == 6) {
-				//Coded and edited by Qiu Rong on 29/08/2020
-				ArrayList<Item> itemList = new ArrayList<Item>();
-				
-				itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
-				itemList.add(new Item("Iphone 11 Pro Max", "Apple", 1600, "20/09/2020", "20/09/2020", 10, "Handphone"));
-				itemList.add(new Item("Smart Television", "Samsung", 1700, "21/09/2020", "21/09/2020", 10, "Electronic"));
-				itemList.add(new Item("Macbook", "Apple", 1900, "18/09/2020", "30/09/2020", 10, "Electronic"));
-				// Display num of item in each category
-				CategoryDB.findAllItemsInCat(itemList);
-				
-			} else if (categoryOption == 7) {
-				// Coded by Qiu Rong on 29/08/2020
-					// Quit
-					System.out.println("You have exited Category Menu.");
-			
-			} else {
-				System.out.println("Invalid type");
-			}
-
-		}
-
-	}
+	
 
 	// Method userMenu added
 	public static void userMenu(ArrayList<User> userList) {

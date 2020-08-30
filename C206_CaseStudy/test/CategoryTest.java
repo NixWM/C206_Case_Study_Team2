@@ -34,18 +34,7 @@ public class CategoryTest {
 
 	@Test
 	public void addCategoryTest() {
-//		//Test that catList is NOT NULL
-//		assertNotNull("Test that catList is NOT null", CategoryDB.categoryList);
-//		
-//		//Test that the size of catList is 0 before adding any categories
-//		assertEquals("Test that the size of catList is 0 before adding any categories", 0, CategoryDB.categoryList.size());
-//		//Test that the size of catList is 1 after adding a category
-//		CategoryDB.addCategory(categoryList, category1);
-//		assertEquals("Test that the size of catList is 1 after adding a category", 1, CategoryDB.categoryList.size());
-//		//Test that the first element in catList is the same as what was added.
-//		assertSame("Test that the first element in catList is the same as what was added", category1, CategoryDB.categoryList.get(0));
-//		
-//		//New edit
+//		//New edited code on 30/08/2020 by Qiu Rong
 
 		// Category list is not null, so that can add a new category - boundary
 		assertNotNull("Check if there is valid Category arraylist to add to", categoryList);
@@ -63,30 +52,12 @@ public class CategoryTest {
 	}
 	
 	@Test 
-	public void viewAllCategory() {
-		//Test if CategoryList is not null
-//		assertNotNull("Test if CategoryList is not null", CategoryDB.categoryList);
-//		
-//		//Test if the list of category retrieved is not empty
-//		String allCategory = CategoryDB.viewAllCategory(CategoryDB.categoryList);
-//		CategoryDB.categoryList.clear();
-//		String testOutput = "\n======Category List======\n";
-//		testOutput += "Electronic\nHandphone\n";
-//		assertEquals("Test if the list of category retrieved is empty",testOutput, allCategory);
-//				
-//		//test if the expected output string same as the list of category retrieved from the categoryDB	
-//		allCategory= CategoryDB.viewAllCategory(CategoryDB.categoryList);
-//		String testOutput2 = "\n======Category List======\n";
-//		testOutput2 += "Electronic\n";
-//		testOutput2 += "Handphone\n";
-//			
-//		assertEquals("Test that viewAllCategoryList", testOutput2, allCategory);
-		
+	public void viewAllCategory() {		
 		//New code to try solve my error on 30/08/2020
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Category arraylist to retrieve item", categoryList);
 		
-		//test if the list of camcorders retrieved from the SourceCentre is empty - boundary
+		//test if the list of category retrieved from the CategoryDB is empty - boundary
 		String allCategory= CategoryDB.viewAllCategory(categoryList);
 		String testOutput = "\n======Category List======\n";
 		assertEquals("Check that ViewAllCamcorderlist", testOutput, allCategory);
@@ -96,7 +67,7 @@ public class CategoryTest {
 		CategoryDB.addCategory(categoryList, category2);
 		assertEquals("Test that Camcorder arraylist size is 2", 2, categoryList.size());
 		
-		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
+		//test if the expected output string same as the list of category retrieved from the categoryDB	
 		allCategory= CategoryDB.viewAllCategory(categoryList);
 		testOutput = "\n======Category List======\n";
 		testOutput += "Electronic\nHandphone\n";
@@ -112,8 +83,8 @@ public class CategoryTest {
 		assertNotNull("Test that categoryList is NOT null", CategoryDB.categoryList);
 		
 		//Test that the size of categoryList is 0 after deleting a category
-		CategoryDB.delCategory();
-		assertEquals("Test that the size of categoryList is not 0 after deleting a category", 0, CategoryDB.categoryList.size());
+		CategoryDB.delCategory("Electronic");
+		assertEquals("Test that the size of categoryList is 0 after deleting a category", 0, CategoryDB.categoryList.size());
 
 	}
 	
@@ -125,8 +96,7 @@ public class CategoryTest {
 		//Test that categoryList is not empty
 		CategoryDB.addCategory(categoryList, category1);
 		CategoryDB.addCategory(categoryList, category2);
-
-		assertNotEquals("Test that categoryList is not empty", category1, CategoryDB.categoryList);
+		assertEquals("Test that category arraylist not empty", 2, categoryList.size());
 		
 		//Test that category will be able to search
 //		String searchCat = Helper.readString("Enter category name to search: ");

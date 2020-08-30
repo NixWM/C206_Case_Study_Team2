@@ -180,7 +180,7 @@ public class itemDatabase {
 		return output;
 	}
 	
-	public static void showDealMenu() {
+	public static void showItemMenu() {
 		Helper.line(40, "-");
 		System.out.println("ITEM MENU");
 		Helper.line(40, "-");
@@ -190,5 +190,27 @@ public class itemDatabase {
 		System.out.println("3. Delete Item");
 		System.out.println("4. Search Item");
 		System.out.println("5. Update Item");
+	}
+	
+	public static void itemMenu() {
+		showItemMenu();
+		int choice = Helper.readInt("Enter option: ");
+		switch (choice) {
+		case 1:
+			addItem(null);
+			break;
+		case 2:
+			viewAllItem();
+			break;
+		case 3:
+			delItem();
+			break;
+		case 4: 
+			searchItem();
+			break;
+		case 5:
+			updateItem();
+			break;
+		}
 	}
 }

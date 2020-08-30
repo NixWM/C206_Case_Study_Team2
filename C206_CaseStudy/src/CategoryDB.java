@@ -6,14 +6,16 @@ public class CategoryDB {
 	
 	public static ArrayList<Category> categoryList = new ArrayList<Category>();
 	
-<<<<<<< HEAD
-	Category cat1 = new Category("E-Books");
+	public static Category inputCategory() {
+		String catName = Helper.readString("Enter new category name: ");
+		Category category = new Category(catName);
+		return category;
+		
+	}
 	
-=======
 
->>>>>>> branch 'master' of https://github.com/NixWM/C206_Case_Study_Team2.git
 
-	public static void addCategory(Category category) {
+	public static void addCategory(ArrayList<Category> categoryList, Category category) {
 
 		categoryList.add(category);
 		
@@ -21,53 +23,57 @@ public class CategoryDB {
 	
 	public static String viewAllCategory(ArrayList<Category> categoryList) {
 		
-		// Coded by Qiu Rong 28/08/2020
-		Category cat1 = new Category("Electronic"); // Creating a new object
-	    categoryList.add(cat1);
-	    categoryList.add(new Category("Handphone"));
-	    String output = "";
-	    
+		//New edit 30/08/2020 to solve my error
+		String output = "";
 		output += "\n======Category List======\n";
-		
-
 		for (int i = 0; i < categoryList.size(); i++) {
 			
 			output += categoryList.get(i).getName()+"\n";
 		}
-		
 		return output;
+		
+		
 	}
 	
 	public static void display(ArrayList<Category> categoryList) {
-		if(categoryList != null) {
-			
-			String output = viewAllCategory(categoryList);
-			System.out.println(output);
-		} else {
-			//Coded by Qiu Rong on 29/08/2020
-			System.out.println("Nothing to display");
-		}
+		String output = "";
+		output += viewAllCategory(categoryList);
+		System.out.println(output);
+		
 	}
 	
-	public static void delCategory(String category) {
-		Category cat = null;
-		boolean found = false;
-		for (int i = 0; i < categoryList.size(); i++){
-	          if (categoryList.get(i).getName().equalsIgnoreCase(category)){
-	        	  found = true;
-	        	  cat= categoryList.get(i);
-	          } 
-	          
-	       }
-		if (found == true) {
-			categoryList.remove(cat);
-			System.out.println("You have successfully deleted " + cat);
-		} else {
-			System.out.println("You have entered an invalid category name.");
-		}
-		
+	public static String inputSearchCategory() {
+		String catName = Helper.readString("Enter category name to search: ");
+
+		return catName;
 		
 	}
+	
+	
+	public static void delCategory(String categoryName) {
+		C206_CaseStudy.setHeader("Delete Category");
+		boolean proceed = false;
+		String output = "";
+		int i = 0;
+		
+		for (; i < categoryList.size(); i++) {
+			if (categoryList.get(i).getName().equals(categoryName)) {
+				proceed = true;
+				break;
+			}
+		}
+		
+		if (proceed) {
+			categoryList.remove(i);
+			output += "Category " + categoryName +" has been removed";
+		} else 
+			output += "The category name is invalid";
+		
+		System.out.println(output);
+		System.out.println();
+	}
+	
+	
 	
 	
 	public static void showCategoryMenu() {
@@ -87,7 +93,7 @@ public class CategoryDB {
 	}
 
 	public static void searchCategory(String catName) {
-		
+		C206_CaseStudy.setHeader("Search Category");
 		boolean found = false;
 		Category cat = null;
 		
@@ -108,6 +114,7 @@ public class CategoryDB {
 	}
 	
 	public static void updateCategory(String category) {
+		
 		boolean found = false;
 		Category cat = null;
 		for (int i = 0; i < categoryList.size(); i++){
@@ -119,7 +126,7 @@ public class CategoryDB {
 		if (found == true) {
 			String catNewName = Helper.readString("Enter new category name to change: ");
 			cat.setName(catNewName);
-			System.out.println(catNewName+" updated!");
+			System.out.println("Category "+category+" name has been updated to " + catNewName);
 		} else {
 			System.out.println("You have entered an invalid category name.");
 		}
@@ -127,6 +134,7 @@ public class CategoryDB {
 	
 	//Coded by Qiu Rong on 29/08/2020
 	public static void findAllItemsInCat(ArrayList<Item> itemList) {
+		C206_CaseStudy.setHeader("Display Number of Items in each Category");
 		ArrayList<String> nameOfCat = new ArrayList<String>();
 		ArrayList<Integer> itemInCat = new ArrayList<Integer>();
 		String catName = null;
@@ -156,6 +164,76 @@ public class CategoryDB {
 		for(int i=0; i<nameOfCat.size(); i++) {
 			System.out.println(nameOfCat.get(i)+": There are "+itemInCat.get(i)+" items.");
 		}
+	}
+	
+	// Coded by Qiu Rong at 25/08/2020
+	// Edited code by Qiu Rong at 26/08/2020
+	// Edited code again by Qiu Rong at 27/08/2020
+	//Moved it from Case_study to categoryDB by Qiu Rong at 30/08/2020
+	public static void categoryMenu() {
+
+
+		categoryList.add(new Category("Electronic"));
+		categoryList.add(new Category("Handphone"));
+		int categoryOption = 0;
+
+		while (categoryOption != 7) {
+			CategoryDB.showCategoryMenu();
+			categoryOption = Helper.readInt("Enter a category option > ");
+
+			if (categoryOption == 1) {
+				// View all category
+				display(categoryList);
+			} else if (categoryOption == 2) {
+				// Add category
+				display(categoryList);
+				Category category = CategoryDB.inputCategory();
+				CategoryDB.addCategory(categoryList, category);
+				System.out.println(category+ " is added!");
+				
+			} else if (categoryOption == 3) {
+				// Delete Category
+				display(categoryList);
+				System.out.println();
+				String categoryName = Helper.readString("Enter category name: ");
+				delCategory(categoryName);
+				
+			
+
+			} else if (categoryOption == 4) {
+				// Search Category
+
+				String catName = Helper.readString("Enter category name to search: ");
+				CategoryDB.searchCategory(catName);
+
+			} else if (categoryOption == 5) {
+				// Update Category
+				C206_CaseStudy.setHeader("Update Category");
+				String catName = Helper.readString("Enter category name to edit: ");
+				CategoryDB.updateCategory(catName);
+
+			} else if (categoryOption == 6) {
+				//Coded and edited by Qiu Rong on 29/08/2020
+				ArrayList<Item> itemList = new ArrayList<Item>();
+				
+				itemList.add(new Item("Samsung Galaxy S9", "Samsung", 1200, "29/09/2020", "29/09/2020", 5, "Handphone"));
+				itemList.add(new Item("Iphone 11 Pro Max", "Apple", 1600, "20/09/2020", "20/09/2020", 10, "Handphone"));
+				itemList.add(new Item("Smart Television", "Samsung", 1700, "21/09/2020", "21/09/2020", 10, "Electronic"));
+				itemList.add(new Item("Macbook", "Apple", 1900, "18/09/2020", "30/09/2020", 10, "Electronic"));
+				// Display num of item in each category
+				CategoryDB.findAllItemsInCat(itemList);
+				
+			} else if (categoryOption == 7) {
+				// Coded by Qiu Rong on 29/08/2020
+					// Quit
+					System.out.println("You have exited Category Menu.");
+			
+			} else {
+				System.out.println("Invalid type");
+			}
+
+		}
+
 	}
 	
 
